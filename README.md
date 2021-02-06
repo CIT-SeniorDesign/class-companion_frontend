@@ -1,2 +1,1 @@
-# Readme
-Test description
+# Class Companion
