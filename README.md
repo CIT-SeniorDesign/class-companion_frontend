@@ -1,4 +1,3 @@
 # CSUN Class Companion
- Team Null
- 
+ Team Null  
  CIT 481 - Senior Design
