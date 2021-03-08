@@ -1,4 +1,40 @@
 /* ./your-css-folder/styles.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+  .logo {
+    position: absolute;
+    height: 40px;
+    width: 155px;
+    left: 171px;
+    top: 20px;
+  }
+  .class-companion {
+    position: absolute;
+    width: 345px;
+    height: 46px;
+    left: 334px;
+    top: 17px;
+    line-height: 46px;
+  }
+  .home {
+    position: absolute;
+    width: 78px;
+    height: 28px;
+    right: 352px;
+    top: 27px;
+    font-size: 24px;
+    line-height: 29px;
+  }
+  .dashboard {
+    position: absolute;
+    width: 135px;
+    height: 29px;
+    right: 171px;
+    top: 26px;
+    font-size: 24px;
+    line-height: 29px;
+  }
+}

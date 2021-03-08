@@ -1,5 +1,7 @@
+<!-- TODO: Finish navbar -->
+
 <!doctype html>
-<html>
+<html >
 
 <head>
 	<!-- ... -->
@@ -14,23 +16,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 				rel="stylesheet">
 
-	<!-- Navbar -->
-	<nav class="border-b-1 border-opacity-20 border-black flex items-center">
-		<span class="mx-44">
-			<span class="font-montserrat font-bold text-logo text-primary">
-				<a class=""><img src="assets/CSUN Logo.png"
-							 class="inline"></a>
-				<a class="pl-2">Class Companion</a>
-			</span>
-			<span class="font-montserrat font-medium text-2xl text-black">
-				<a class="home">Home</a>
-				<a class="dashboard">Dashboard</a>
-			</span>
-		</span>
-	</nav>
+
 </head>
 
-<body>
+<body class="relative w-full h-full">
+		<!-- Navbar -->
+		<nav class="border-b-1 border-opacity-20 border-black py-5 absolute left-0 top-0 w-full h-20">
+			<a class="logo font-montserrat font-bold text-logo text-primarylogo"><img src="assets/CSUN Logo.png"></a>
+			<a class="font-montserrat font-bold text-logo text-primary class-companion whitespace-nowrap">Class Companion</a>
+			<a class="home font-montserrat font-medium text-black">Home</a>
+			<a class="dashboard font-montserrat font-medium text-black">Dashboard</a>
+		</nav>
 
 </body>
 
