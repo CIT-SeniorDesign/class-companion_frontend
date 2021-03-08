@@ -2,11 +2,22 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      'hind': ['Hind'],
-      'montserrat': ['Montserrat']
+    extend: {
+      fontFamily: {
+        hind: "Hind",
+        montserrat: "Montserrat"
+      },
+      fontSize: {
+        logo: '38px'
+      },
+      colors: {
+        primary: '#D22030',
+        secondary: '#6D7275'
+      },
+      borderWidth: {
+        1: '1px'
+      }
     },
-    extend: {},
   },
   variants: {
     extend: {},
