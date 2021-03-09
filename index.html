@@ -1,4 +1,4 @@
-<!-- TODO: Finish navbar -->
+<!-- TODO: Move "Class Companion" text down so that it's aligned with the logo -->
 
 <!doctype html>
 <html>
@@ -20,16 +20,26 @@
 </head>
 
 <body>
-	<!-- Navbar -->
+	<!-- Full navbar -->
 	<nav class="border-b-1 border-opacity-20 border-black">
-		<div class="justify-between max-w-full m-0 py-0 px-44 flex items-center">
+		<!-- Navbar left side-->
+		<div class="justify-between max-w-full m-0 py-0 px-44 flex items-center flex-wrap">
 			<a href="index.html"
-				 class="font-montserrat font-bold text-logo text-primary whitespace-nowrap"><img src="assets/CSUN Logo.png"
+				 class="font-montserrat font-bold text-logo text-primary">
+				<img src="assets/CSUN Logo.png"
 						 class="max-w-none inline pr-2">Class Companion</a>
-			<a href="index.html" class="font-montserrat font-medium text-black">Home</a>
-			<a href="dashboard.html" class="font-montserrat font-medium text-black">Dashboard</a>
+
+			<!-- Navbar right side -->
+			<span class="justify-end">
+				<a href="index.html"
+					 class="font-montserrat font-medium text-black text-2xl pr-11">Home</a>
+				<a href="dashboard.html"
+					 class="font-montserrat font-medium text-black text-2xl">Dashboard</a>
 		</div>
+		</span>
 	</nav>
+
+<!-- TODO: Learn and use grid for the body content -->
 
 	<!-- Content -->
 	<!-- <span class="content-container">
