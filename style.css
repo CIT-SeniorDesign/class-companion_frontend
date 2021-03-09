@@ -4,86 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-  .logo {
-    position: absolute;
-    height: 40px;
-    width: 155px;
-    left: 171px;
-    top: 20px;
-  }
-  .class-companion {
-    position: absolute;
-    width: 345px;
-    height: 46px;
-    left: 334px;
-    top: 17px;
-    line-height: 46px;
-  }
-  .home {
-    position: absolute;
-    width: 78px;
-    height: 28px;
-    left: 1010px;
-    top: 27px;
-    font-size: 24px;
-    line-height: 29px;
-  }
-  .dashboard {
-    position: absolute;
-    width: 135px;
-    height: 29px;
-    left: 1134px;
-    top: 26px;
-    font-size: 24px;
-    line-height: 29px;
-  }
-  .content-container {
-    /* Auto Layout */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    position: absolute;
-    width: 1088px;
-    height: 286px;
-    left: 171px;
-    top: 119px;
-  }
-  h1 {
-    position: absolute;
-    width: 659px;
-    height: 176px;
-    left: 0px;
-    top: 0px;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 59px;
-    color: #000000;
-  }
-  h2 {
-    position: absolute;
-    width: 630px;
-    height: 140px;
-    left: 0px;
-    top: 134px;
-    font-family: Hind;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 48px;
-  }
-  .books-img {
-    position: absolute;
-    width: 395px;
-    height: 286px;
-    left: 693px;
-    top: 0px;
-    /* Inside Auto Layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 0px 34px;
+
+  nav a {
+    padding: 10px;
+    margin: 0 5px;
   }
 }
