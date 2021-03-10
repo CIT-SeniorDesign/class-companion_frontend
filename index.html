@@ -23,14 +23,15 @@
 	<!-- Full navbar -->
 	<nav class="border-b-1 border-opacity-20 border-black">
 		<!-- Navbar left side-->
-		<div class="justify-between max-w-full m-0 mx-44 flex items-center flex-wrap">
+		<div
+				 class="justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between max-w-full mx-3 lg:mx-60 flex items-center flex-wrap">
 			<a href="index.html"
-				 class="font-montserrat font-bold text-logo text-primary">
+				 class="font-montserrat font-bold text-logo text-primary px-0">
 				<img src="assets/CSUN Logo.png"
-						 class="max-w-none inline pr-2 pb-2"><span class="">Class Companion</span></a>
+						 class="pr-2 pb-2 inline-flex"><span class="">Class Companion</span></a>
 
 			<!-- Navbar right side -->
-			<span class="justify-end">
+			<span>
 				<a href="index.html"
 					 class="nav-button nav-hover mr-11">Home</a>
 				<a href="dashboard.html"
@@ -42,13 +43,15 @@
 	<!-- TODO: Learn and use grid for the body content -->
 
 	<!-- Content -->
-	<!-- <span class="content-container">
-		<h1>All-in-one tool to help you choose the right class.</h1>
-		<h2>Check the status of a class, receive notifications when a spot opens up, find a class location, and easily
+	<div class="content-grid grid mx-60  mt-10 grid-cols-2 grid-rows-2">
+		<h1 class="font-montserrat font-bold col-start-1 row-start-1">All-in-one tool to help you choose the right class.
+		</h1>
+		<h2 class="font-hind col-start-1 row-start-2">Check the status of a class, receive notifications when a spot opens
+			up, find a class location, and easily
 			compare professors.</h2>
 		<img src="assets/books.png"
-				 class="books-img">
-	</span> -->
+				 class="col-span-2 row-span-2 col-start-2 row-start-1 books-img justify-self-end">
+	</div>
 
 
 </body>

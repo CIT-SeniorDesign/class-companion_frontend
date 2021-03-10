@@ -601,8 +601,6 @@ video {
 .nav-hover:hover {
   --tw-border-opacity: 1;
   border-color: rgba(210, 32, 48, var(--tw-border-opacity));
-  --tw-text-opacity: 1;
-  color: rgba(210, 32, 48, var(--tw-text-opacity));
 }
 
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
@@ -31594,6 +31592,20 @@ video {
 nav a {
   padding: 10px;
   margin: 0 5px;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 59px;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 48px;
+}
+
+.content-grid {
+  grid-template-columns: 2fr;
 }
 
 @media (min-width: 640px) {

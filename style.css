@@ -8,14 +8,24 @@
     padding: 10px;
     margin: 0 5px;
   }
+  h1 {
+    font-size: 3rem;
+    line-height: 59px;
+  }
+  h2 {
+    font-size: 1.875rem;
+    line-height: 48px;
+  }
+  .content-grid {
+    grid-template-columns: 2fr;
+  }
 }
 
 @layer components {
   .nav-button {
     @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
   }
-
   .nav-hover {
-    @apply hover:text-primary hover:border-primary;
+    @apply hover:border-primary;
   }
 }
