@@ -587,6 +587,24 @@ video {
   }
 }
 
+.nav-button {
+  border-color: transparent;
+  border-bottom-width: 2px;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+
+.nav-hover:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(210, 32, 48, var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(210, 32, 48, var(--tw-text-opacity));
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));

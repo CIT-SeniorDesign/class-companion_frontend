@@ -4,9 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-
   nav a {
     padding: 10px;
     margin: 0 5px;
+  }
+}
+
+@layer components {
+  .nav-button {
+    @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
+  }
+
+  .nav-hover {
+    @apply hover:text-primary hover:border-primary;
   }
 }
