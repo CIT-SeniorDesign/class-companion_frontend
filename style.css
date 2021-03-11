@@ -22,6 +22,12 @@
 }
 
 @layer components {
+  .navbar-container {
+    @apply border-b-1 border-opacity-20 border-black;
+  }
+  .navbar {
+    @apply justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between max-w-full mx-3 lg:mx-60 flex items-center flex-wrap;
+  }
   .nav-button {
     @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
   }
