@@ -23,12 +23,12 @@ module.exports = {
         hind: "Hind",
         montserrat: "Montserrat"
       },
-      fontSize: {
-        logo: '38px'
-      },
       colors: {
         primary: '#D22030',
         secondary: '#6D7275'
+      },
+      fontSize: {
+        logo: '38px'
       },
       borderWidth: {
         1: '1px'
