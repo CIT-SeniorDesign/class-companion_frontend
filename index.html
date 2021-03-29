@@ -1,5 +1,3 @@
-<!-- TODO: Move "Class Companion" text down so that it's aligned with the logo -->
-
 <!doctype html>
 <html>
 
@@ -39,26 +37,55 @@
 		</span>
 	</nav>
 
-	<!-- TODO: Learn and use grid for the body content -->
-
 	<!-- Content -->
-	<div class="content-grid grid mx-60  mt-10 grid-cols-2 grid-rows-3">
-		<!-- Tagline -->
+	<div class="content-grid grid grid-cols-2 grid-rows-3 mx-6 md:mx-12 xl:mx-60 mt-10">
 		<h1 class="font-montserrat font-bold col-start-1 row-start-1">All-in-one tool to help you choose the right class.
 		</h1>
-		<!-- Explanation -->
 		<h2 class="font-hind col-start-1 row-start-2">Check the status of a class, receive notifications when a spot opens
 			up, find a class location, and easily
 			compare professors.</h2>
-			<!-- Image -->
 		<img src="assets/books.svg"
-				 class="col-span-2 row-span-2 col-start-2 row-start-1 books-img justify-self-end h-72" />
-		<span class="flex flex-shrink" ></span><button
-							class="font-semibold text-white bg-primary get-started-btn rounded-3xl px-5 h-12 leading-none font-montserrat text-4xl row-start-3 justify-self-start "><a
-					 href="dashboard.html">Get Started</a></button>
+				 class="xl:col-span-2 xl:row-span-2 xl:col-start-2 xl:row-start-1 books-img justify-self-start h-72 " />
+		<span class="flex"></span>
+		<button class="font-semibold text-white bg-primary get-started-btn rounded-3xl px-5 h-12 leading-none font-montserrat text-4xl row-start-3 justify-self-center xl:justify-self-start"
+						type="button"
+						onclick="location.href='dashboard.html';" />Get Started
+		</button>
 		</span>
 	</div>
 
+	<!-- Create hero section -->
+	<!-- Whole row flexbox -->
+	<div
+			 class="flex flex-wrap sm:flex-wrap md:flex-wrap lg:flex-nowrap xl:flex-nowrap mx-60 justify-evenly space-x-32 mb-20">
+		<!-- Box and image flexbox -->
+		<div class="flex flex-col justify-items-center items-center space-y-3">
+			<img src="assets/Gear Icon.svg">
+			<p class="text-2xl text-center font-montserrat font-normal">
+				Automatically pulls ratings for each professor from RateMyProfessor
+			</p>
+		</div>
+		<!-- Box and image flexbox -->
+		<div class="flex flex-col justify-items-center items-center space-y-3">
+			<img src="assets/UI Icon.svg">
+			<p class="text-2xl text-center font-montserrat font-normal">
+				Beautiful easy to use interface designed with the student in mind
+			</p>
+		</div>
+		<!-- Box and image flexbox -->
+		<div class="flex flex-col justify-items-center items-center space-y-3">
+			<img src="assets/Notification Icon.svg">
+			<p class="text-2xl text-center font-montserrat font-normal">
+				Receive text, email, or push notifications delivered to any device
+			</p>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="border-t-1 border-opacity-20 border-black text-center py-5 font-montserrat font-normal ">
+		<p>Developed by Team Null</p>
+		<p>CIT Senior Design</p>
+	</footer>
 
 </body>
 
