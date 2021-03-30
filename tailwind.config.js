@@ -2,6 +2,12 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    space: {
+      sm: '5px',
+      md: '10px',
+      lg: '15px',
+      xl: '20px',
+    },
     screens: {
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -24,7 +30,8 @@ module.exports = {
         montserrat: "Montserrat"
       },
       fontSize: {
-        logo: '38px'
+        logo: '38px',
+        section_header: '26px'
       },
       colors: {
         primary: '#D22030',

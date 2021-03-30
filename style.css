@@ -19,6 +19,10 @@
     line-height: 48px;
   }
 
+  .w-class_search {
+    width: 262px;
+  }
+
   .content-grid {
     grid-template-columns: 2fr;
   }
@@ -46,10 +50,18 @@
   }
 
   .nav-button {
-    @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
+    @apply font-montserrat font-medium text-black text-section_header border-b-2 border-transparent;
   }
 
   .nav-hover {
     @apply hover:border-primary;
+  }
+
+  .section-header {
+    @apply font-montserrat font-bold text-2xl text-black;
+  }
+
+  .section-explanation {
+    @apply font-montserrat font-normal text-base leading-5 text-black ;
   }
 }
