@@ -2,12 +2,6 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    space: {
-      sm: '5px',
-      md: '10px',
-      lg: '15px',
-      xl: '20px',
-    },
     screens: {
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -35,7 +29,8 @@ module.exports = {
       },
       colors: {
         primary: '#D22030',
-        secondary: '#6D7275'
+        secondary: '#6D7275',
+        input_box: '#CCCCCC'
       },
       borderWidth: {
         1: '1px'

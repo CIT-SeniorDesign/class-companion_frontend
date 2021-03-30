@@ -39,20 +39,51 @@
 
 	<!-- Content -->
 	<div class="mx-6 md:mx-12 xl:mx-64 mt-10">
+
 		<!-- Start of Column 1 Flexbox -->
-<div class="flex flex-col w-class_search">
-	<div class="section-header">Class Search</div>
-	<div class="section-explanation">Search for your desired class here.</div>
+		<div class="flex flex-col w-class_search">
 
-		<!-- Class Search Section -->
+			<!-- Class search heading -->
+			<div class="section-header pb-2">Class Search</div>
+			<div class="section-explanation pb-2">Search for your desired class here.</div>
 
-		<!-- Notifications Section -->
+			<!-- Semester input -->
+			<label for="semester-select"
+						 class="input-text pt-2 pb-1 font-medium">Semester</label>
+			<select name="semester"
+							id="semester-select"
+							class="input-text border-1 border-input_box px-1">
+				<option value="">Placeholder</option>
+			</select>
 
-		<!-- End of Column 1 Flexbox -->
+			<!-- Department input -->
+			<label for="department-select"
+						 class="input-text pt-3 pb-1 font-medium">Department</label>
+			<select name="department"
+							id="department-select"
+							class="input-text border-1 border-input_box px-1">
+				<option value="">Placeholder</option>
+			</select>
+			
+			<!-- Reset and Search buttons -->
+			<div class="flex flex-row space-x-2 justify-end">
+				<button type="button"
+								onclick=""
+								class="dash-btn mt-4">Reset</button>
+				<button type="button"
+								onclick=""
+								class="dash-btn mt-4">Search</button>
+			</div>
+
+			<!-- Class Search Section -->
+
+			<!-- Notifications Section -->
+
+			<!-- End of Column 1 Flexbox -->
 		</div>
 
 		<!-- Class Listings Section -->
-		</div>
+	</div>
 
 	<!-- Footer -->
 	<footer class="border-t-1 border-opacity-20 border-black text-center py-5 font-montserrat font-normal ">
