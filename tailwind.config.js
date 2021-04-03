@@ -30,7 +30,8 @@ module.exports = {
       colors: {
         primary: '#D22030',
         secondary: '#6D7275',
-        input_box: '#CCCCCC'
+        input_box: '#CCCCCC',
+        notify_btn: '#EBEBE4'
       },
       borderWidth: {
         1: '1px'
