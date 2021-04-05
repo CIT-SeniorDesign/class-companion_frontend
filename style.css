@@ -9,6 +9,14 @@
     margin: 0 5px;
   }
 
+  table {
+    empty-cells: hide;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
   h1 {
     font-size: 3rem;
     line-height: 59px;
@@ -62,7 +70,7 @@
   }
 
   .section-explanation {
-    @apply font-montserrat font-normal text-base leading-5 text-black ;
+    @apply font-montserrat font-normal text-base leading-5 text-black;
   }
 
   .input-text {

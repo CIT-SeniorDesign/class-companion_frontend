@@ -42,93 +42,131 @@
 
 		<!-- Start of Row Flexbox -->
 		<div class="flex flex-row">
-		<!-- Start of Column 1 Flexbox -->
-		<div class="flex flex-col w-1/5">
-			<!-- Class Search Section -->
-			<!-- Class search heading -->
-			<div class="section-header pb-2">Class Search</div>
-			<div class="section-explanation pb-2">Search for your desired class here.</div>
+			<!-- Start of Column 1 Flexbox -->
+			<div class="flex flex-col w-1/5">
+				<!-- Class Search Section -->
+				<!-- Class search heading -->
+				<div class="section-header pb-2">Class Search</div>
+				<div class="section-explanation pb-2">Search for your desired class here.</div>
 
-			<!-- Semester input -->
-			<label for="semester-select"
-						 class="input-text pt-2 pb-1 font-medium">Semester</label>
-			<select name="semester"
-							id="semester-select"
-							class="input-text border-1 border-input_box px-1">
-				<option value="">Placeholder</option>
-			</select>
+				<!-- Semester input -->
+				<label for="semester-select"
+							 class="input-text pt-2 pb-1 font-medium">Semester</label>
+				<select name="semester"
+								id="semester-select"
+								class="input-text border-1 border-input_box px-1">
+					<option value="">Placeholder</option>
+				</select>
 
-			<!-- Department input -->
-			<label for="department-select"
-						 class="input-text pt-3 pb-1 font-medium">Department</label>
-			<select name="department"
-							id="department-select"
-							class="input-text border-1 border-input_box px-1">
-				<option value="">Placeholder</option>
-			</select>
+				<!-- Department input -->
+				<label for="department-select"
+							 class="input-text pt-3 pb-1 font-medium">Department</label>
+				<select name="department"
+								id="department-select"
+								class="input-text border-1 border-input_box px-1">
+					<option value="">Placeholder</option>
+				</select>
 
-			<!-- Reset and Search buttons -->
-			<div class="flex flex-row space-x-2 justify-end">
-				<button type="button"
-								onclick=""
-								class="dash-btn mt-4">Reset</button>
-				<button type="button"
-								onclick=""
-								class="dash-btn mt-4">Search</button>
-			</div>
+				<!-- Reset and Search buttons -->
+				<div class="flex flex-row space-x-2 justify-end">
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4">Reset</button>
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4">Search</button>
+				</div>
 
-			<!-- Notifications Section -->
-			<div class="section-header pt-8 pb-2">Notifications</div>
-			<div class="section-explanation pb-2">Enter your info to signup for notifications when a seat opens up for the
-				classes you selected.</div>
+				<!-- Notifications Section -->
+				<div class="section-header pt-8 pb-2">Notifications</div>
+				<div class="section-explanation pb-2">Enter your info to signup for notifications when a seat opens up for the
+					classes you selected.</div>
 
-			<!-- Selected Classes -->
-			<div class="input-text pt-3 pb-1 font-medium">Selected Classes:</div>
-			<div class="input-text">Placeholder</div>
+				<!-- Selected Classes -->
+				<div class="input-text pt-3 pb-1 font-medium">Selected Classes:</div>
+				<div class="input-text">Placeholder</div>
 
-			<!-- Browser Notifications -->
-			<div class="input-text pt-3 pb-1 font-medium">Browser Notifications</div>
-			<div class="flex flex-row space-x-2 justify-end">
-				<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
-				</button>
-				<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
-				</button>
-			</div>
+				<!-- Browser Notifications -->
+				<div class="input-text pt-3 pb-1 font-medium">Browser Notifications</div>
+				<div class="flex flex-row space-x-2 justify-end">
+					<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+					</button>
+					<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
+					</button>
+				</div>
 
-			<!-- Email Input -->
-			<label for="email-input"
-						 class="input-text pt-3 pb-1 font-medium">Email Address</label>
-			<input name="email-input"
-						 id="email-input"
-						 type="email"
-						 class="input-text border-1 border-input_box px-1">
-			</input>
-			<!-- Phone Input -->
-			<label for="phone-input"
-						 class="input-text pt-3 pb-1 font-medium">Phone Number</label>
-			<input name="phone-input"
-						 id="phone-input"
-						 type="tel"
-						 class="input-text border-1 border-input_box px-1">
-			</input>
-			<!-- Save Notification Settings Button -->
+				<!-- Email Input -->
+				<label for="email-input"
+							 class="input-text pt-3 pb-1 font-medium">Email Address</label>
+				<input name="email-input"
+							 id="email-input"
+							 type="email"
+							 class="input-text border-1 border-input_box px-1">
+				</input>
+				<!-- Phone Input -->
+				<label for="phone-input"
+							 class="input-text pt-3 pb-1 font-medium">Phone Number</label>
+				<input name="phone-input"
+							 id="phone-input"
+							 type="tel"
+							 class="input-text border-1 border-input_box px-1">
+				</input>
+				<!-- Save Notification Settings Button -->
 				<button type="button"
 								onclick=""
 								class="dash-btn mt-4 w-full">Save Notification Settings</button>
 
-			<!-- End of Column 1 Flexbox -->
-		</div>
+				<!-- End of Column 1 Flexbox -->
+			</div>
 
-		<!-- Class Listings Section -->
-		<!-- Start of Column 2 Flexbox -->
-		<div class="flex flex-col w-4/5 px-6">
-			<div class="section-header pb-2 self-center ">Class Listings</div>
-			test
-
-
-		<!-- End of Column 2 Flexbox -->
+			<!-- Start of Column 2 Flexbox -->
+			<div class="flex flex-col w-4/5 px-10">
+				<!-- Class Listings Section -->
+				<div class="section-header pb-4 self-center ">Class Listings</div>
+				<div>
+					<input type="image"
+								 src="assets/play 1.svg"
+								 id="class_listing"
+								 class=""></button>
+					<label for="class_listing"
+								 class=" pl-1 cursor-pointer font-normal font-roboto text-lg leading-7">CIT 101 - CIT Fundamentals
+						(Lecture - 2
+						Units)</label>
 				</div>
-		<!-- End of Row Flexbox -->
+				<!-- Section Table -->
+				<table class="border border-solid rounded-sm mt-3 ">
+					<tr class="text-left divide-x-1 bg-black bg-opacity-5 border-b-1">
+						<th class=""></th>
+						<th>Session</th>
+						<th>Section</th>
+						<th>Class #</th>
+						<th>Status</th>
+						<th>Open Seats</th>
+						<th>Type</th>
+						<th>Location</th>
+						<th>Days</th>
+						<th>Time</th>
+						<th>Instructor</th>
+					</tr>
+					<tr class="divide-x-1 border-b-1">
+						<td class="text-center"><input type="checkbox"></input></td>
+						<td>Session</td>
+						<td>Section</td>
+						<td>Class #</td>
+						<td>Status</td>
+						<td>Open Seats</td>
+						<td>Type</td>
+						<td>Location</td>
+						<td>Days</td>
+						<td>Time</td>
+						<td>Instructor</td>
+					</tr>
+
+				</table>
+
+				<!-- End of Column 2 Flexbox -->
+			</div>
+			<!-- End of Row Flexbox -->
 		</div>
 	</div>
 

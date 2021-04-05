@@ -21,7 +21,8 @@ module.exports = {
     extend: {
       fontFamily: {
         hind: "Hind",
-        montserrat: "Montserrat"
+        montserrat: "Montserrat",
+        roboto: "Roboto"
       },
       fontSize: {
         logo: '38px',
@@ -31,7 +32,8 @@ module.exports = {
         primary: '#D22030',
         secondary: '#6D7275',
         input_box: '#CCCCCC',
-        notify_btn: '#EBEBE4'
+        notify_btn: '#EBEBE4',
+        table_header: '#B9B9B9'
       },
       borderWidth: {
         1: '1px'
