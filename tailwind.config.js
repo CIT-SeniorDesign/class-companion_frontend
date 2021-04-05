@@ -26,7 +26,7 @@ module.exports = {
       },
       fontSize: {
         logo: '38px',
-        section_header: '26px'
+        section_header: '24px'
       },
       colors: {
         primary: '#D22030',

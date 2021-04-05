@@ -637,7 +637,7 @@ video {
   border-bottom-width: 2px;
   font-family: Montserrat;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 24px;
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
@@ -12167,7 +12167,7 @@ video {
 }
 
 .text-section_header {
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .leading-3 {
@@ -43766,7 +43766,7 @@ h2 {
   }
 
   .sm\:text-section_header {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .sm\:leading-3 {
@@ -75245,7 +75245,7 @@ h2 {
   }
 
   .md\:text-section_header {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .md\:leading-3 {
@@ -106724,7 +106724,7 @@ h2 {
   }
 
   .lg\:text-section_header {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .lg\:leading-3 {
@@ -138203,7 +138203,7 @@ h2 {
   }
 
   .xl\:text-section_header {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .xl\:leading-3 {
@@ -169682,7 +169682,7 @@ h2 {
   }
 
   .\32xl\:text-section_header {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .\32xl\:leading-3 {
