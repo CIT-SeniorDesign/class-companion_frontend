@@ -63,8 +63,31 @@ search_btn.onclick = () => {
           unit_string = "Units"
         }
 
+        // Create concatenation string for the class listing
         var class_concat = `${subject} ${catalog_number} - ${title} (${units} ${unit_string})`
         console.log(class_concat)
+
+        // Create flex box element and append it to #class_listings id
+        var flex = document.createElement("div")
+        flex.classList.add("flex")
+        document.querySelector("#class_listings").appendChild(flex)
+
+        // Create play button element and append it to #class_listings id
+        var play_button = document.createElement("input")
+        play_button.src = "assets/play 1.svg"
+        play_button.type = "image"
+        document.querySelector("#class_listings").appendChild(play_button)
+
+        // Create label element and append it to #class_listings id
+        var class_listing = document.createElement("label")
+        class_listing.innerHTML = class_concat;
+        class_listing.classList.add("pl-2")
+        class_listing.classList.add("cursor-pointer")
+        class_listing.classList.add("font-normal")
+        class_listing.classList.add("font-roboto")
+        class_listing.classList.add("text-lg")
+        class_listing.classList.add("leading-7")
+        document.querySelector("#class_listings").appendChild(class_listing)
       }
     });
 }
