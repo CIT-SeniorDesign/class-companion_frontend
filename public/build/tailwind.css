@@ -599,8 +599,8 @@ video {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   max-width: 100%;
 }
 
@@ -613,20 +613,22 @@ video {
 @media (min-width: 768px) {
   .navbar {
     justify-content: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .navbar {
     justify-content: space-between;
-    margin-left: 15rem;
-    margin-right: 15rem;
   }
 }
 
 @media (min-width: 1280px) {
   .navbar {
     justify-content: space-between;
+    margin-left: 15rem;
+    margin-right: 15rem;
   }
 }
 
@@ -31652,14 +31654,14 @@ h2 {
 }
 
 .get-started-btn {
-  border-color: #D22030;
+  border-color: #d22030;
   color: #fff;
-  box-shadow: 0 0 40px 40px #D22030 inset, 0 0 0 0 #D22030;
+  box-shadow: 0 0 40px 40px #d22030 inset, 0 0 0 0 #d22030;
   transition: all 150ms ease-in-out;
 }
 
 .get-started-btn:hover {
-  box-shadow: 0 0 1px 6px #D22030;
+  box-shadow: 0 0 1px 6px #d22030;
 }
 
 @media (min-width: 640px) {

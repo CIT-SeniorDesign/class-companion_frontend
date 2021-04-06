@@ -8,26 +8,31 @@
     padding: 10px;
     margin: 0 5px;
   }
+
   h1 {
     font-size: 3rem;
     line-height: 59px;
   }
+
   h2 {
     font-size: 1.875rem;
     line-height: 48px;
   }
+
   .content-grid {
     grid-template-columns: 2fr;
   }
+
   .get-started-btn {
-    border-color: #D22030;
+    border-color: #d22030;
     color: #fff;
-    box-shadow: 0 0 40px 40px #D22030 inset, 0 0 0 0 #D22030;
+    box-shadow: 0 0 40px 40px #d22030 inset, 0 0 0 0 #d22030;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
   }
+
   .get-started-btn:hover {
-    box-shadow: 0 0 1px 6px #D22030;
+    box-shadow: 0 0 1px 6px #d22030;
   }
 }
 
@@ -35,12 +40,15 @@
   .navbar-container {
     @apply border-b-1 border-opacity-20 border-black;
   }
+
   .navbar {
-    @apply justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between max-w-full mx-3 lg:mx-60 flex items-center flex-wrap;
+    @apply justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between max-w-full mx-6 md:mx-12 xl:mx-60 flex items-center flex-wrap;
   }
+
   .nav-button {
     @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
   }
+
   .nav-hover {
     @apply hover:border-primary;
   }
