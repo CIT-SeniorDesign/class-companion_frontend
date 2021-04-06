@@ -25,7 +25,7 @@ module.exports = {
         roboto: "Roboto"
       },
       fontSize: {
-        logo: '46px',
+        logo: '40px',
         section_header: '24px'
       },
       colors: {
