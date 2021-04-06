@@ -3,7 +3,7 @@ name: CD to GHP
 on: 
   push:
     branches:
-      - dev
+      - GHAtesting #should be dev
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: dev
+          ref: GHAtesting #should be dev
 
       - name: Install dependencies & compile code
         run: |
