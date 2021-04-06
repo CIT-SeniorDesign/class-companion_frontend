@@ -51,19 +51,18 @@ search_btn.onclick = () => {
     document.querySelector("#class_listings").innerHTML = '';
   }
 
-  // Construct url to ping, given semester and department inputs
+  // Construct url to ping MetaLab api, given semester and department inputs
   var semester = document.querySelector("#semester-select").value
   semester = semester.replace(" ", "-")
   var department = document.querySelector("#department-select").value
 
   var url = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semester + '/courses/' + department
 
+  // Ping MetaLab api
   fetch(url)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-
-
 
       // If there are no classes available then display message
       if (data.courses.length == 0) {
@@ -75,6 +74,7 @@ search_btn.onclick = () => {
         document.querySelector("#class_listings").appendChild(class_listing)
       }
 
+      // Loop through the courses and store the proper variables
       for (i = 0; i < data.courses.length; i++) {
         var catalog_number = data.courses[i].catalog_number;
         var course_id = data.courses[i].course_id;
@@ -84,11 +84,10 @@ search_btn.onclick = () => {
         var term = data.courses[i].term;
         var title = data.courses[i].title;
         var units = data.courses[i].units;
-        var unit_string = "Unit"
+        var unit_string = "unit"
         if (units > 1) {
-          unit_string = "Units"
+          unit_string = "units"
         }
-
 
         // Create concatenation string for the class listing
         var class_concat = `${subject} ${catalog_number} - ${title} (${units} ${unit_string})`
@@ -114,7 +113,38 @@ search_btn.onclick = () => {
         class_listing.classList.add("font-roboto")
         class_listing.classList.add("text-lg")
         class_listing.classList.add("leading-7")
+        class_listing.id = `class-content${i}`
+        class_listing.setAttribute('onclick','generateCourseTable(this.id)')
         document.querySelector("#class_listings").appendChild(class_listing)
+
       }
     });
 }
+
+function generateCourseTable(parentElement) {
+  console.log(parentElement)
+  // Create table element
+  var courseTable = document.createElement("table")
+  courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3")
+  courseTable.id = "classtable"
+  document.querySelector(`#${parentElement}`).appendChild(courseTable)
+
+  // Create row element
+  var courseRow = document.createElement("tr")
+  courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
+  courseRow.id = "tablerow"
+  document.querySelector(`#classtable`).appendChild(courseRow)
+  
+  // Create table header element
+  var courseHeader = document.createElement("th")
+  courseHeader.id = "tableheader"
+  courseHeader.innerHTML="test"
+  document.querySelector(`#tablerow`).appendChild(courseHeader)
+}
+
+
+
+
+
+
+
