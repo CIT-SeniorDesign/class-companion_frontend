@@ -28,6 +28,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: prod
-          build_dir: ./
+          build_dir: dev #was "./"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
