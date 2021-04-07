@@ -28,14 +28,13 @@ jobs:
           ls -l
           cd ../
           ls -l
-          mv * ~/dist
-          mv ~/dist ./
+          
       
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: prod
-          build_dir: dist 
+          build_dir: ./../class-companion_frontend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
