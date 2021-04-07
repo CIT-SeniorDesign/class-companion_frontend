@@ -50,7 +50,7 @@
   },
   "scripts": {
     "build": "postcss style.css -o public/build/tailwind.css",
-    "format": "prettier --write ."
+    "format": "prettier --write '*.html'"
   },
   "repository": {
     "type": "git",
