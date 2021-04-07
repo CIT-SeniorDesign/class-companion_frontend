@@ -26,9 +26,6 @@ jobs:
       - name: list directories test
         run: | 
           ls -l
-          mkdir dist
-          mv * dist
-          ls -l
           cd ../
           ls -l
       
