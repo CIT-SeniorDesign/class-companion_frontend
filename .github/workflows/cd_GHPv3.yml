@@ -11,13 +11,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: dev
+          ref: prod
 
       - name: Install dependencies & compile code
         run: |
           git pull origin dev
+          ls -la
           npm install
+          ls -la
           npm run build
+          ls -la 
       # Configures git credentials before pushing up to target branch
       - name: Package new compiled code & deploy to target branch
         run: |
