@@ -28,6 +28,9 @@ jobs:
           ls -l
           mkdir dist
           mv * dist
+          ls -l
+          cd ../
+          ls -l
       
       - name: Deploy to GitHub Pages
         if: success()
