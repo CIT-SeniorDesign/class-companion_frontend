@@ -3,7 +3,7 @@ name: CD to GHP v3
 on: 
   push:
     branches:
-      - GHAtesting #should be dev
+      - dev
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
