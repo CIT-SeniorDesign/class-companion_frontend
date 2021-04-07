@@ -24,7 +24,10 @@ jobs:
           pages_threshold: major_outage
       
       - name: list directories test
-        run: ls -l 
+        run: | 
+          ls -l
+          cd ../ 
+          ls -l 
       
       - name: Deploy to GitHub Pages
         if: success()
