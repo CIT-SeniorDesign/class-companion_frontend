@@ -28,6 +28,8 @@ jobs:
           ls -l
           cd ../
           ls -l
+          mv * ~/dist
+          mv ~/dist ./
       
       - name: Deploy to GitHub Pages
         if: success()
