@@ -11,22 +11,55 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: prod
+          ref: dev
 
       - name: Install dependencies & compile code
         run: |
-          git pull origin dev
-          ls -la
           npm install
-          ls -la
           npm run build
-          ls -la 
+          ls -la
+
+      - name: Build dist directory
+        run: |
+          mkdir dist
+          mv .gitignore dist
+          mv README.md dist
+          mv assets dist
+          mv index.html dist
+          mv public dist
+          mv style.css dist
+          ls -la
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist
+          retention-days: 1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: prod
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: ~/dist
+
+      - name: Move dist into current directory
+        run: |
+          mv ~/dist ./
+          ls -la
+
       # Configures git credentials before pushing up to target branch
       - name: Package new compiled code & deploy to target branch
         run: |
+          mv .git dist
+          cd dist
           git config --global user.email "github-action@users.noreply.github.com"
           git config --global user.name "GitHub Action"
           git add .
           git commit -m "Automatic build deployment"
           git push -fq
-
