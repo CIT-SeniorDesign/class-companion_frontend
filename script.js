@@ -125,21 +125,36 @@ function generateCourseTable(parentElement) {
   console.log(parentElement)
   // Create table element
   var courseTable = document.createElement("table")
-  courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3")
-  courseTable.id = "classtable"
+  courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "text-base")
+  courseTable.id = `classtable${parentElement}`
   document.querySelector(`#${parentElement}`).appendChild(courseTable)
 
   // Create row element
   var courseRow = document.createElement("tr")
   courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
-  courseRow.id = "tablerow"
-  document.querySelector(`#classtable`).appendChild(courseRow)
+  courseRow.id = `tablerow${parentElement}`
+  document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
   
   // Create table header element
-  var courseHeader = document.createElement("th")
-  courseHeader.id = "tableheader"
-  courseHeader.innerHTML="test"
-  document.querySelector(`#tablerow`).appendChild(courseHeader)
+  var courseHeader0 = document.createElement("th", "")
+  courseHeader0.innerHTML=""
+  document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
+
+  var courseHeader1 = document.createElement("th")
+  courseHeader1.innerHTML = "Session"
+  document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
+
+  var courseHeader2 = document.createElement("th")
+  courseHeader2.innerHTML = "Section"
+  document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
+
+  var courseHeader3 = document.createElement("th")
+  courseHeader3.innerHTML = "Class #"
+  document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
+
+  var courseHeader4 = document.createElement("th")
+  courseHeader4.innerHTML = "Status"
+  document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
 }
 
 
