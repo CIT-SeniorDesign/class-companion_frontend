@@ -1,4 +1,4 @@
-name: CD to GHP 
+name: CD to GHP v2
 
 on: 
   push:
