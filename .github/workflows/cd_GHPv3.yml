@@ -5,7 +5,7 @@ on:
     branches:
       - GHAtesting #should be dev
 jobs:
-  build-test-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -55,11 +55,14 @@ jobs:
 
       # Configures git credentials before pushing up to target branch
       - name: Package new compiled code & deploy to target branch
-        run: |
-          mv .git dist
-          cd dist
-          git config --global user.email "github-action@users.noreply.github.com"
-          git config --global user.name "GitHub Action"
-          git add .
-          git commit -m "Automatic build deployment"
-          git push -fq
+        run: mv .git dist
+      
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: prod
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
