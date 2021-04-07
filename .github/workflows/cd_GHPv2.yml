@@ -3,7 +3,7 @@ name: CD to GHP v2
 on: 
   push:
     branches:
-      - GHAtesting #should be dev
+      - #GHAtesting #should be dev
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
