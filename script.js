@@ -157,11 +157,22 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var enrollment_cap = data.classes[0].enrollment_cap
       var enrollment_count = data.classes[0].enrollment_count
       var instructors = data.classes[0].instructors
+      var status
+
+      // If no instructors found, then print No data
       if (instructors.length == 0) {
         instructors = "No data."
       }
       else {
         instructors = data.classes[0].instructors[0].instructor
+      }
+
+      // If enrollment capacity is greater than the amount of people enrolled, then print Open
+      if (enrollment_cap > enrollment_count) {
+        status = "Open"
+      }
+      else {
+        status = "Closed"
       }
 
       var end_time
@@ -204,7 +215,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
       // Create table element
       var courseTable = document.createElement("table")
-      courseTable.classList.add("border", "border-solid", "rounded-sm", "my-3", "text-base")
+      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
       courseTable.id = `classtable${parentElement}`
       document.querySelector(`#${parentElement}`).appendChild(courseTable)
 
@@ -267,7 +278,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
       // Create table data elements
       var tableElements = []
-      var tableDataContent = ["-", "1", section_number, class_number, "Placeholder", "Placeholder", class_type, location, days, `${meeting_time}`, instructors]
+      var tableDataContent = ["-", "1", section_number, class_number, status, "Placeholder", class_type, location, days, `${meeting_time}`, instructors]
 
       for (var num = 0; num < 11; num++) {
         tableElements[num] = document.createElement("td")
@@ -293,14 +304,6 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
 
 }
-
-// Create script that when the Class Listing is clicked, fetch the classes available for that 
-// Construct url to ping MetaLab api, given semester and department inputs
-
-
-
-
-// '<input type="checkbox"></input>'
 
 
 
