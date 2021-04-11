@@ -158,6 +158,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var enrollment_count = data.classes[0].enrollment_count
       var instructors = data.classes[0].instructors
       var status
+      var open_seats = enrollment_cap - enrollment_count
 
       // If no instructors found, then print No data
       if (instructors.length == 0) {
@@ -278,7 +279,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
       // Create table data elements
       var tableElements = []
-      var tableDataContent = ["-", "1", section_number, class_number, status, "Placeholder", class_type, location, days, `${meeting_time}`, instructors]
+      var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
 
       for (var num = 0; num < 11; num++) {
         tableElements[num] = document.createElement("td")
