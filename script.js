@@ -140,9 +140,9 @@ search_btn.onclick = () => {
 
 
 function generateCourseTable(parentElement, section_number, classUrl) {
-  console.log(parentElement)
-  console.log(section_number)
-  console.log(classUrl)
+  // console.log(parentElement)
+  // console.log(section_number)
+  // console.log(classUrl)
 
   // Fetch classes for selected semester and department
   fetch(classUrl)
@@ -197,7 +197,24 @@ function generateCourseTable(parentElement, section_number, classUrl) {
         location = data.classes[0].meetings[0].location
         meeting_number = data.classes[0].meetings[0].meeting_number
         start_time = data.classes[0].meetings[0].start_time
-        meeting_time = `${start_time} - ${end_time}`
+
+        var startTimeHour = start_time.replace('h', '').slice(0, 2) + ':'
+        var startTimeMinute = start_time.replace('h', '').slice(2, 4)
+
+        const startTime12hr = new Date('1970-01-01T' + startTimeHour + startTimeMinute + 'Z')
+          .toLocaleTimeString({},
+            { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
+          );
+
+        var endTimeHour = end_time.replace('h', '').slice(0, 2) + ':'
+        var endTimeMinute = end_time.replace('h', '').slice(2, 4)
+
+        const endTime12hr = new Date('1970-01-01T' + endTimeHour + endTimeMinute + 'Z')
+          .toLocaleTimeString({},
+            { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
+          );
+
+        meeting_time = `${startTime12hr} - ${endTime12hr}`
       }
 
       // var end_time = data.classes[0].meetings[0].end_time
@@ -212,7 +229,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var waitlist_cap = data.classes[0].waitlist_cap
       var waitlist_count = data.classes[0].catalog_number
 
-      console.log(catalog_number, class_number, class_type, instructors, days, end_time, location, meeting_number, start_time)
+      // console.log(catalog_number, class_number, class_type, instructors, days, end_time, location, meeting_number, start_time)
 
       // Create table element
       var courseTable = document.createElement("table")
