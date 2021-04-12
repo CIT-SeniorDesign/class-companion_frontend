@@ -149,183 +149,192 @@ function generateCourseTable(parentElement, section_number, classUrl) {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      var catalog_number = JSON.stringify(data.classes[0].catalog_number)
-      var class_number = data.classes[0].class_number
-      var class_type = data.classes[0].class_type
-      var course_id = data.classes[0].course_id
-      var description = data.classes[0].description
-      var enrollment_cap = data.classes[0].enrollment_cap
-      var enrollment_count = data.classes[0].enrollment_count
-      var instructors = data.classes[0].instructors
-      var status
-      var open_seats = enrollment_cap - enrollment_count
 
-      var instructorFirstName
-      var instructorLastName
-      var instructorName
+      // Loop through classes
+      for (i = 0; i < data.classes.length; i++) {
+        var catalog_number = JSON.stringify(data.classes[i].catalog_number)
+        var class_number = data.classes[i].class_number
+        var class_type = data.classes[i].class_type
+        var course_id = data.classes[i].course_id
+        var description = data.classes[i].description
+        var enrollment_cap = data.classes[i].enrollment_cap
+        var enrollment_count = data.classes[i].enrollment_count
+        var instructors = data.classes[i].instructors[0].instructor
+        var status
+        var open_seats = enrollment_cap - enrollment_count
 
+        var instructorFirstName
+        var instructorLastName
+        instructors = instructors.replace('.', ' ').replace('@csun.edu', '')
+        const words = instructors.split(" ");
 
-
-
-      // If enrollment capacity is greater than the amount of people enrolled, then print Open
-      if (enrollment_cap > enrollment_count) {
-        status = "Open"
-      }
-      else {
-        status = "Closed"
-      }
-
-      var end_time
-      var location
-      var meeting_number
-      var start_time
-      var meeting_time
-
-      var meetings = data.classes[0].meetings
-      if (meetings.length == 0) {
-        days = "No data."
-        end_time = "No data."
-        location = "No data."
-        meeting_number = "No data."
-        start_time = "No data."
-        meeting_time = "No data."
-      }
-      else {
-        days = data.classes[0].meetings[0].days
-        end_time = data.classes[0].meetings[0].end_time
-        location = data.classes[0].meetings[0].location
-        meeting_number = data.classes[0].meetings[0].meeting_number
-        start_time = data.classes[0].meetings[0].start_time
-
-        var startTimeHour = start_time.replace('h', '').slice(0, 2) + ':'
-        var startTimeMinute = start_time.replace('h', '').slice(2, 4)
-
-        const startTime12hr = new Date('1970-01-01T' + startTimeHour + startTimeMinute + 'Z')
-          .toLocaleTimeString({},
-            { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
-          );
-
-        var endTimeHour = end_time.replace('h', '').slice(0, 2) + ':'
-        var endTimeMinute = end_time.replace('h', '').slice(2, 4)
-
-        const endTime12hr = new Date('1970-01-01T' + endTimeHour + endTimeMinute + 'Z')
-          .toLocaleTimeString({},
-            { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
-          );
-
-        meeting_time = `${startTime12hr} - ${endTime12hr}`
-      }
-
-      var section_number = data.classes[0].section_number
-      var subject = data.classes[0].subject
-      var term = data.classes[0].term
-      var title = data.classes[0].title
-      var units = data.classes[0].units
-      var waitlist_cap = data.classes[0].waitlist_cap
-      var waitlist_count = data.classes[0].catalog_number
-
-      // Create table element
-      var courseTable = document.createElement("table")
-      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
-      courseTable.id = `classtable${parentElement}`
-      document.querySelector(`#${parentElement}`).appendChild(courseTable)
-
-      // Create table header row element
-      var courseRow = document.createElement("tr")
-      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
-      courseRow.id = `tablerow${parentElement}`
-      document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
-
-      // Create table header elements
-      var courseHeader0 = document.createElement("th", "")
-      courseHeader0.innerHTML = ""
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
-
-      var courseHeader1 = document.createElement("th")
-      courseHeader1.innerHTML = "Session"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
-
-      var courseHeader2 = document.createElement("th")
-      courseHeader2.innerHTML = "Section"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
-
-      var courseHeader3 = document.createElement("th")
-      courseHeader3.innerHTML = "Class #"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
-
-      var courseHeader4 = document.createElement("th")
-      courseHeader4.innerHTML = "Status"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
-
-      var courseHeader5 = document.createElement("th")
-      courseHeader5.innerHTML = "Open Seats"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader5)
-
-      var courseHeader6 = document.createElement("th")
-      courseHeader6.innerHTML = "Type"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader6)
-
-      var courseHeader7 = document.createElement("th")
-      courseHeader7.innerHTML = "Location"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader7)
-
-      var courseHeader8 = document.createElement("th")
-      courseHeader8.innerHTML = "Days"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader8)
-
-      var courseHeader9 = document.createElement("th")
-      courseHeader9.innerHTML = "Time"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader9)
-
-      var courseHeader10 = document.createElement("th")
-      courseHeader10.innerHTML = "Instructor"
-      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader10)
-
-      // Create table data row
-      var tableDataRow = document.createElement("tr")
-      tableDataRow.classList.add("divide-x-1", "border-b-1")
-      tableDataRow.id = `dataRow${parentElement}`
-      document.querySelector(`#classtable${parentElement}`).appendChild(tableDataRow)
-
-
-
-      // Create table data elements
-      var tableElements = []
-      var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`,]
-
-      for (var num = 0; num < 11; num++) {
-        tableElements[num] = document.createElement("td")
-        if (num == 10) {
-          // If no instructors found, then print No data
-          if (instructors.length == 0) {
-            tableElements[num].innerHTML = "No data."
-          }
-          else {
-            instructors = data.classes[0].instructors[0].instructor
-            var directoryUrl = 'https://api.metalab.csun.edu/directory/api/members/email/' + instructors
-
-            fetch(directoryUrl)
-              .then(response => response.json())
-              .then(data => {
-                console.log(data)
-                instructorFirstName = data.people.last_name
-                instructorLastName = data.people.first_name
-                instructorName = `${instructorLastName}, ${instructorFirstName}`
-                tableElements[10].innerHTML = instructorName
-              }
-              );
-          }
-        } else {
-          tableElements[num].innerHTML = tableDataContent[num]
+        for (let i = 0; i < words.length; i++) {
+          words[i] = words[i][0].toUpperCase() + words[i].substr(1);
         }
 
-        document.querySelector(`#dataRow${parentElement}`).appendChild(tableElements[num])
+        words.reverse()
+        instructors = words.join(", ")
+        // instructors = instructors[0].instructor
+        // console.log(instructorName)
+
+        // If enrollment capacity is greater than the amount of people enrolled, then print Open
+        if (enrollment_cap > enrollment_count) {
+          status = "Open"
+        }
+        else {
+          status = "Closed"
+        }
+
+        var end_time
+        var location
+        var meeting_number
+        var start_time
+        var meeting_time
+
+        var meetings = data.classes[i].meetings
+        if (meetings.length == 0) {
+          days = "No data."
+          end_time = "No data."
+          location = "No data."
+          meeting_number = "No data."
+          start_time = "No data."
+          meeting_time = "No data."
+        }
+        else {
+          days = data.classes[i].meetings[0].days
+          end_time = data.classes[i].meetings[0].end_time
+          location = data.classes[i].meetings[0].location
+          meeting_number = data.classes[i].meetings[0].meeting_number
+          start_time = data.classes[i].meetings[0].start_time
+
+          var startTimeHour = start_time.replace('h', '').slice(0, 2) + ':'
+          var startTimeMinute = start_time.replace('h', '').slice(2, 4)
+
+          const startTime12hr = new Date('1970-01-01T' + startTimeHour + startTimeMinute + 'Z')
+            .toLocaleTimeString({},
+              { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
+            );
+
+          var endTimeHour = end_time.replace('h', '').slice(0, 2) + ':'
+          var endTimeMinute = end_time.replace('h', '').slice(2, 4)
+
+          const endTime12hr = new Date('1970-01-01T' + endTimeHour + endTimeMinute + 'Z')
+            .toLocaleTimeString({},
+              { timeZone: 'UTC', hour12: true, hour: 'numeric', minute: 'numeric' }
+            );
+
+          meeting_time = `${startTime12hr} - ${endTime12hr}`
+        }
+
+        var section_number = data.classes[i].section_number
+        var subject = data.classes[i].subject
+        var term = data.classes[i].term
+        var title = data.classes[i].title
+        var units = data.classes[i].units
+        var waitlist_cap = data.classes[i].waitlist_cap
+        var waitlist_count = data.classes[i].catalog_number
+
+        // Create table element
+        var courseTable = document.createElement("table")
+        courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
+        courseTable.id = `classtable${parentElement}`
+        document.querySelector(`#${parentElement}`).appendChild(courseTable)
+
+        // Create table header row element
+        var courseRow = document.createElement("tr")
+        courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
+        courseRow.id = `tablerow${parentElement}`
+        document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
+
+        // Create table header elements
+        var courseHeader0 = document.createElement("th", "")
+        courseHeader0.innerHTML = ""
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
+
+        var courseHeader1 = document.createElement("th")
+        courseHeader1.innerHTML = "Session"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
+
+        var courseHeader2 = document.createElement("th")
+        courseHeader2.innerHTML = "Section"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
+
+        var courseHeader3 = document.createElement("th")
+        courseHeader3.innerHTML = "Class #"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
+
+        var courseHeader4 = document.createElement("th")
+        courseHeader4.innerHTML = "Status"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
+
+        var courseHeader5 = document.createElement("th")
+        courseHeader5.innerHTML = "Open Seats"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader5)
+
+        var courseHeader6 = document.createElement("th")
+        courseHeader6.innerHTML = "Type"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader6)
+
+        var courseHeader7 = document.createElement("th")
+        courseHeader7.innerHTML = "Location"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader7)
+
+        var courseHeader8 = document.createElement("th")
+        courseHeader8.innerHTML = "Days"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader8)
+
+        var courseHeader9 = document.createElement("th")
+        courseHeader9.innerHTML = "Time"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader9)
+
+        var courseHeader10 = document.createElement("th")
+        courseHeader10.innerHTML = "Instructor"
+        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader10)
+
+        // Create table data row
+        var tableDataRow = document.createElement("tr")
+        tableDataRow.classList.add("divide-x-1", "border-b-1")
+        tableDataRow.id = `dataRow${parentElement}`
+        document.querySelector(`#classtable${parentElement}`).appendChild(tableDataRow)
+
+
+
+        // Create table data elements
+        var tableElements = []
+        var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+
+        for (var num = 0; num < 11; num++) {
+          tableElements[num] = document.createElement("td")
+          // if (num == 10) {
+          //   // If no instructors found, then print No data
+          //   if (instructors.length == 0) {
+          //     tableElements[num].innerHTML = "No data."
+          //   }
+          //   else {
+          //     instructors = data.classes[i].instructors[0].instructor
+          //     var directoryUrl = 'https://api.metalab.csun.edu/directory/api/members/email/' + instructors
+
+          //     fetch(directoryUrl)
+          //       .then(response => response.json())
+          //       .then(data => {
+          //         console.log(data)
+          //         instructorLastName = data.people.last_name
+          //         instructorFirstName = data.people.first_name
+          //         instructorName = `${instructorLastName}, ${instructorFirstName}`
+          //         console.log(instructorName)
+
+          //       }
+          //       );
+          //     tableElements[num].innerHTML = instructorName
+          //   }
+          // } 
+          // else {
+          tableElements[num].innerHTML = tableDataContent[num]
+          // }
+
+          document.querySelector(`#dataRow${parentElement}`).appendChild(tableElements[num])
+        }
       }
-
-
-
-
-
     }
     );
 
