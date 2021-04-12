@@ -119,10 +119,14 @@ search_btn.onclick = () => {
         var play_button = document.createElement("input")
         play_button.src = "assets/play 1.svg"
         play_button.type = "image"
+        play_button.id = `playbutton-class-content${i}`
+        // play_button.id = `play-button${i}`
+        // play_button.setAttribute('onclick', `generateCourseTable(this.id, ${section_number}, ${classUrl})`)
         document.querySelector("#class_listings").appendChild(play_button)
 
         // Create label element and append it to #class_listings id
         var class_listing = document.createElement("label")
+        // class_listing.htmlFor = `playbutton-${i}`
         class_listing.innerHTML = class_concat;
         class_listing.classList.add("pl-2")
         class_listing.classList.add("cursor-pointer")
@@ -140,9 +144,14 @@ search_btn.onclick = () => {
 
 
 function generateCourseTable(parentElement, section_number, classUrl) {
-  // console.log(parentElement)
+  console.log(parentElement)
+  // console.log(this)
   // console.log(section_number)
   // console.log(classUrl)
+
+  // Rotate the arrow down
+  var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
+  playButtonSelector.classList.add("transform", "rotate-90" )
 
   // Fetch classes for selected semester and department
   fetch(classUrl)
@@ -336,16 +345,9 @@ function generateCourseTable(parentElement, section_number, classUrl) {
           // else {
           tableElements[num].innerHTML = tableDataContent[num]
           // }
-
           document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
         }
       }
     }
     );
 }
-
-
-
-
-
-
