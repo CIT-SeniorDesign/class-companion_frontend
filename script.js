@@ -75,7 +75,7 @@ search_btn.onclick = () => {
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
 
       // If there are no classes available then display message
       if (data.courses.length == 0) {
@@ -150,6 +150,63 @@ function generateCourseTable(parentElement, section_number, classUrl) {
     .then(data => {
       console.log(data)
 
+      // Create table element
+      var courseTable = document.createElement("table")
+      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
+      courseTable.id = `classtable${parentElement}`
+      document.querySelector(`#${parentElement}`).appendChild(courseTable)
+
+      // Create table header row element
+      var courseRow = document.createElement("tr")
+      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
+      courseRow.id = `tablerow${parentElement}`
+      document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
+
+      // Create table header elements
+      var courseHeader0 = document.createElement("th", "")
+      courseHeader0.innerHTML = ""
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
+
+      var courseHeader1 = document.createElement("th")
+      courseHeader1.innerHTML = "Session"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
+
+      var courseHeader2 = document.createElement("th")
+      courseHeader2.innerHTML = "Section"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
+
+      var courseHeader3 = document.createElement("th")
+      courseHeader3.innerHTML = "Class #"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
+
+      var courseHeader4 = document.createElement("th")
+      courseHeader4.innerHTML = "Status"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
+
+      var courseHeader5 = document.createElement("th")
+      courseHeader5.innerHTML = "Open Seats"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader5)
+
+      var courseHeader6 = document.createElement("th")
+      courseHeader6.innerHTML = "Type"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader6)
+
+      var courseHeader7 = document.createElement("th")
+      courseHeader7.innerHTML = "Location"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader7)
+
+      var courseHeader8 = document.createElement("th")
+      courseHeader8.innerHTML = "Days"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader8)
+
+      var courseHeader9 = document.createElement("th")
+      courseHeader9.innerHTML = "Time"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader9)
+
+      var courseHeader10 = document.createElement("th")
+      courseHeader10.innerHTML = "Instructor"
+      document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader10)
+
       // Loop through classes
       for (i = 0; i < data.classes.length; i++) {
         var catalog_number = JSON.stringify(data.classes[i].catalog_number)
@@ -159,21 +216,28 @@ function generateCourseTable(parentElement, section_number, classUrl) {
         var description = data.classes[i].description
         var enrollment_cap = data.classes[i].enrollment_cap
         var enrollment_count = data.classes[i].enrollment_count
-        var instructors = data.classes[i].instructors[0].instructor
+        var instructors = data.classes[i].instructors
         var status
         var open_seats = enrollment_cap - enrollment_count
 
         var instructorFirstName
         var instructorLastName
-        instructors = instructors.replace('.', ' ').replace('@csun.edu', '')
-        const words = instructors.split(" ");
 
-        for (let i = 0; i < words.length; i++) {
-          words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+        if (instructors.length == 0) {
+          instructors = "No data."
         }
+        else {
+          instructors = data.classes[i].instructors[0].instructor
+          instructors = instructors.replace('.', ' ').replace('@csun.edu', '')
+          const words = instructors.split(" ");
 
-        words.reverse()
-        instructors = words.join(", ")
+          for (let i = 0; i < words.length; i++) {
+            words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+          }
+
+          words.reverse()
+          instructors = words.join(", ")
+        }
         // instructors = instructors[0].instructor
         // console.log(instructorName)
 
@@ -234,70 +298,11 @@ function generateCourseTable(parentElement, section_number, classUrl) {
         var waitlist_cap = data.classes[i].waitlist_cap
         var waitlist_count = data.classes[i].catalog_number
 
-        // Create table element
-        var courseTable = document.createElement("table")
-        courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
-        courseTable.id = `classtable${parentElement}`
-        document.querySelector(`#${parentElement}`).appendChild(courseTable)
-
-        // Create table header row element
-        var courseRow = document.createElement("tr")
-        courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
-        courseRow.id = `tablerow${parentElement}`
-        document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
-
-        // Create table header elements
-        var courseHeader0 = document.createElement("th", "")
-        courseHeader0.innerHTML = ""
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
-
-        var courseHeader1 = document.createElement("th")
-        courseHeader1.innerHTML = "Session"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
-
-        var courseHeader2 = document.createElement("th")
-        courseHeader2.innerHTML = "Section"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
-
-        var courseHeader3 = document.createElement("th")
-        courseHeader3.innerHTML = "Class #"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
-
-        var courseHeader4 = document.createElement("th")
-        courseHeader4.innerHTML = "Status"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
-
-        var courseHeader5 = document.createElement("th")
-        courseHeader5.innerHTML = "Open Seats"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader5)
-
-        var courseHeader6 = document.createElement("th")
-        courseHeader6.innerHTML = "Type"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader6)
-
-        var courseHeader7 = document.createElement("th")
-        courseHeader7.innerHTML = "Location"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader7)
-
-        var courseHeader8 = document.createElement("th")
-        courseHeader8.innerHTML = "Days"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader8)
-
-        var courseHeader9 = document.createElement("th")
-        courseHeader9.innerHTML = "Time"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader9)
-
-        var courseHeader10 = document.createElement("th")
-        courseHeader10.innerHTML = "Instructor"
-        document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader10)
-
         // Create table data row
         var tableDataRow = document.createElement("tr")
         tableDataRow.classList.add("divide-x-1", "border-b-1")
-        tableDataRow.id = `dataRow${parentElement}`
+        tableDataRow.id = `dataRow${parentElement}${i}`
         document.querySelector(`#classtable${parentElement}`).appendChild(tableDataRow)
-
-
 
         // Create table data elements
         var tableElements = []
@@ -332,13 +337,11 @@ function generateCourseTable(parentElement, section_number, classUrl) {
           tableElements[num].innerHTML = tableDataContent[num]
           // }
 
-          document.querySelector(`#dataRow${parentElement}`).appendChild(tableElements[num])
+          document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
         }
       }
     }
     );
-
-
 }
 
 
