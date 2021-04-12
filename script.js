@@ -234,7 +234,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
         }
         else {
           instructors = data.classes[i].instructors[0].instructor
-          instructors = instructors.replace('.', ' ').replace('@csun.edu', '')
+          instructors = instructors.replace('@csun.edu', '').replace('.', ' ')
           const words = instructors.split(" ");
 
           for (let i = 0; i < words.length; i++) {
@@ -310,7 +310,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
         // Create table data elements
         var tableElements = []
-        var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+        var tableDataContent = [`<input type="checkbox">`, "1", section_number, class_number, status, open_seats, class_type, `<a href="test.html">${location}</a>`, days, `${meeting_time}`, instructors]
 
         for (var num = 0; num < 11; num++) {
           tableElements[num] = document.createElement("td")
