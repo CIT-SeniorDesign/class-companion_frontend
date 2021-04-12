@@ -104,11 +104,11 @@ search_btn.onclick = () => {
 
         var classUrl = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semester + '/classes/' + subject + '-' + catalog_number
         classUrl = `"${classUrl}"`
-        console.log(classUrl)
+        // console.log(classUrl)
 
         // Create concatenation string for the class listing
         var class_concat = `${subject} ${catalog_number} - ${title} (${units} ${unit_string})`
-        console.log(class_concat)
+        // console.log(class_concat)
 
         // Create flex box element and append it to #class_listings id
         var flex = document.createElement("div")
@@ -160,13 +160,12 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var status
       var open_seats = enrollment_cap - enrollment_count
 
-      // If no instructors found, then print No data
-      if (instructors.length == 0) {
-        instructors = "No data."
-      }
-      else {
-        instructors = data.classes[0].instructors[0].instructor
-      }
+      var instructorFirstName
+      var instructorLastName
+      var instructorName
+
+
+
 
       // If enrollment capacity is greater than the amount of people enrolled, then print Open
       if (enrollment_cap > enrollment_count) {
@@ -217,10 +216,6 @@ function generateCourseTable(parentElement, section_number, classUrl) {
         meeting_time = `${startTime12hr} - ${endTime12hr}`
       }
 
-      // var end_time = data.classes[0].meetings[0].end_time
-      // var location = data.classes[0].meetings[0].location
-      // var meeting_number = data.classes[0].meetings[0].meeting_number
-      // var start_time = data.classes[0].meetings[0].start_time
       var section_number = data.classes[0].section_number
       var subject = data.classes[0].subject
       var term = data.classes[0].term
@@ -228,8 +223,6 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var units = data.classes[0].units
       var waitlist_cap = data.classes[0].waitlist_cap
       var waitlist_count = data.classes[0].catalog_number
-
-      // console.log(catalog_number, class_number, class_type, instructors, days, end_time, location, meeting_number, start_time)
 
       // Create table element
       var courseTable = document.createElement("table")
@@ -294,27 +287,43 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       tableDataRow.id = `dataRow${parentElement}`
       document.querySelector(`#classtable${parentElement}`).appendChild(tableDataRow)
 
+
+
       // Create table data elements
       var tableElements = []
-      var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+      var tableDataContent = ["-", "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`,]
 
       for (var num = 0; num < 11; num++) {
         tableElements[num] = document.createElement("td")
+        if (num == 10) {
+          // If no instructors found, then print No data
+          if (instructors.length == 0) {
+            tableElements[num].innerHTML = "No data."
+          }
+          else {
+            instructors = data.classes[0].instructors[0].instructor
+            var directoryUrl = 'https://api.metalab.csun.edu/directory/api/members/email/' + instructors
 
-        // if (num === 0) {
-        //   console.log(tableElements[num])
-        //   tableElements[num].id = "test"
-        //   var checkbox = document.createElement("input")
-        //   checkbox.setAttribute("type", "checkbox")
-        //   document.querySelector(`#dataRow${parentElement}`).appendChild(tableElements[num])
-        //   document.querySelector(`#test`).appendChild(checkbox)
-        // }
-        // else {
-        tableElements[num].innerHTML = tableDataContent[num]
+            fetch(directoryUrl)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data)
+                instructorFirstName = data.people.last_name
+                instructorLastName = data.people.first_name
+                instructorName = `${instructorLastName}, ${instructorFirstName}`
+                tableElements[10].innerHTML = instructorName
+              }
+              );
+          }
+        } else {
+          tableElements[num].innerHTML = tableDataContent[num]
+        }
+
         document.querySelector(`#dataRow${parentElement}`).appendChild(tableElements[num])
-        // }
-
       }
+
+
+
 
 
     }
