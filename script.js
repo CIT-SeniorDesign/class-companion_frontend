@@ -132,7 +132,7 @@ search_btn.onclick = () => {
         class_listing.classList.add("text-lg")
         class_listing.classList.add("leading-7")
         class_listing.id = `class-content${i}`
-        class_listing.setAttribute('onclick', `generateCourseTable(this.id, ${section_number}, ${classUrl})`)
+        class_listing.setAttribute('onclick', `generateCourseTable(this.id, ${section_number}, ${classUrl}); this.onclick=null;`)
         document.querySelector("#class_listings").appendChild(class_listing)
 
       }
@@ -158,13 +158,13 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
       // Create table element
       var courseTable = document.createElement("table")
-      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
+      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base", "cursor-auto")
       courseTable.id = `classtable${parentElement}`
       document.querySelector(`#${parentElement}`).appendChild(courseTable)
 
       // Create table header row element
       var courseRow = document.createElement("tr")
-      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
+      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1", "cursor-auto")
       courseRow.id = `tablerow${parentElement}`
       document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
 
@@ -310,12 +310,58 @@ function generateCourseTable(parentElement, section_number, classUrl) {
 
         // Create table data elements
         var tableElements = []
-        var tableDataContent = [`<input type="checkbox">`, "1", section_number, class_number, status, open_seats, class_type, `<a href="test.html">${location}</a>`, days, `${meeting_time}`, instructors]
+        var tableDataContent = [`<input type="checkbox">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+
 
         for (var num = 0; num < 11; num++) {
           tableElements[num] = document.createElement("td")
-          tableElements[num].innerHTML = tableDataContent[num]
-          document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+
+          // Get room number coordinates
+          // if (num < 11) {
+            if (location == "ONLINE" || location == "No data.") {
+              tableElements[num].innerHTML = tableDataContent[num]
+              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+            }
+            else {
+              var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
+              console.log(waldoApiUrl)
+
+              var latitude
+              var longitude
+              var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+
+              const fetchWaldo = fetch(waldoApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                  latitude = data.rooms[0].latitude
+                  longitude = data.rooms[0].longitude
+                  googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+                  return googleMapsURL
+                });
+
+              const printAddress = (tableElements, num, location, parentElement, i) => {
+                fetchWaldo.then((a) => {
+                  console.log(a);
+                  if (num == 7) {
+                    tableElements[num].innerHTML = `<a href='${a}' target="_blank">${location}</a>`
+                    document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+                  } 
+                  else {
+                    tableElements[num].innerHTML = tableDataContent[num]
+                    document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+                  }
+                });
+              };
+              // tableElements[num].innerHTML = tableDataContent[num]
+              // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+              printAddress(tableElements, num, location, parentElement, i);
+            }
+          // }
+          // else {
+            // tableElements[num].innerHTML = tableDataContent[num]
+            // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+          // }
+
         }
       }
     }
