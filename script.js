@@ -53,6 +53,7 @@ function clearInputs() {
 // Query Metalab API when search button is pressed with given inputs
 var search_btn = document.querySelector("#search-btn")
 var searchButtonCounter = 0
+var classTitleCounter = 0
 
 // Search for classes
 search_btn.onclick = () => {
@@ -113,8 +114,8 @@ search_btn.onclick = () => {
 
         // Create flex box element and append it to #class_listings id
         var flex = document.createElement("div")
-        flex.classList.add("flex")
-        flex.id= `flexbox-${i}`
+        flex.classList.add("flex", "items-center", "block")
+        flex.id = `flexbox-${i}`
         document.querySelector(`#parentDiv-${i}`).appendChild(flex)
 
         // Create play button element and append it to #class_listings id
@@ -142,16 +143,26 @@ search_btn.onclick = () => {
     });
 }
 
+function collapseTable(parentElement, thisTest) {
+  var tableElement = thisTest.parentElement.nextElementSibling
+  if (tableElement.style.display === "table") {
+    tableElement.style.display = "none";
+  } else {
+    tableElement.style.display = "table";
+  }
+}
+
 
 function generateCourseTable(parentElement, thisTest, classUrl) {
+  // searchButtonCounter++
+  // console.log(searchButtonCounter)
   classListingsElement = thisTest.parentElement.parentElement
   var classId = classListingsElement.id
-  console.log(classId)
-  
   console.log(parentElement)
-  // console.log(this)
-  // console.log(section_number)
-  // console.log(classUrl)
+
+  // Remove onclick function once class is clicked
+  thisTest.removeAttribute("onclick");
+
 
   // Rotate the arrow down when clicked
   var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
@@ -165,13 +176,14 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
       // Create table element
       var courseTable = document.createElement("table")
-      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base", "cursor-auto")
+      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
       courseTable.id = `classtable${parentElement}`
+      courseTable.style.display = "table";
       document.querySelector(`#${classId}`).appendChild(courseTable)
 
       // Create table header row element
       var courseRow = document.createElement("tr")
-      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1", "cursor-auto")
+      courseRow.classList.add("text-left", "divide-x-1", "bg-black", "bg-opacity-5", "border-b-1")
       courseRow.id = `tablerow${parentElement}`
       document.querySelector(`#classtable${parentElement}`).appendChild(courseRow)
 
@@ -325,51 +337,53 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
           // Get room number coordinates
           // if (num < 11) {
-            if (location == "ONLINE" || location == "No data.") {
-              tableElements[num].innerHTML = tableDataContent[num]
-              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-            }
-            else {
-              var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
-              console.log(waldoApiUrl)
+          if (location == "ONLINE" || location == "No data.") {
+            tableElements[num].innerHTML = tableDataContent[num]
+            document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+          }
+          else {
+            var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
+            console.log(waldoApiUrl)
 
-              var latitude
-              var longitude
-              var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+            var latitude
+            var longitude
+            var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 
-              const fetchWaldo = fetch(waldoApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                  latitude = data.rooms[0].latitude
-                  longitude = data.rooms[0].longitude
-                  googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
-                  return googleMapsURL
-                });
+            const fetchWaldo = fetch(waldoApiUrl)
+              .then(response => response.json())
+              .then(data => {
+                latitude = data.rooms[0].latitude
+                longitude = data.rooms[0].longitude
+                googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+                return googleMapsURL
+              });
 
-              const printAddress = (tableElements, num, location, parentElement, i) => {
-                fetchWaldo.then((a) => {
-                  console.log(a);
-                  if (num == 7) {
-                    tableElements[num].innerHTML = `<a href='${a}' target="_blank">${location}</a>`
-                    document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                  } 
-                  else {
-                    tableElements[num].innerHTML = tableDataContent[num]
-                    document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                  }
-                });
-              };
-              // tableElements[num].innerHTML = tableDataContent[num]
-              // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-              printAddress(tableElements, num, location, parentElement, i);
-            }
-          // }
-          // else {
+            const printAddress = (tableElements, num, location, parentElement, i) => {
+              fetchWaldo.then((a) => {
+                console.log(a);
+                if (num == 7) {
+                  tableElements[num].innerHTML = `<a href='${a}' target="_blank">${location}</a>`
+                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+                }
+                else {
+                  tableElements[num].innerHTML = tableDataContent[num]
+                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+                }
+              });
+            };
             // tableElements[num].innerHTML = tableDataContent[num]
             // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+            printAddress(tableElements, num, location, parentElement, i);
+          }
+          // }
+          // else {
+          // tableElements[num].innerHTML = tableDataContent[num]
+          // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
           // }
 
         }
+
+        thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
       }
     }
     );
