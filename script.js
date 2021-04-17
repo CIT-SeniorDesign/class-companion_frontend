@@ -54,6 +54,7 @@ function clearInputs() {
 var search_btn = document.querySelector("#search-btn")
 var searchButtonCounter = 0
 
+// Search for classes
 search_btn.onclick = () => {
 
   // Increase the search button click counter
@@ -65,11 +66,11 @@ search_btn.onclick = () => {
   }
 
   // Construct url to ping MetaLab api, given semester and department inputs
-  var semester = document.querySelector("#semester-select").value
-  semester = semester.replace(" ", "-")
-  var department = document.querySelector("#department-select").value
+  var semesterValue = document.querySelector("#semester-select").value
+  semesterValue = semesterValue.replace(" ", "-")
+  var departmentValue = document.querySelector("#department-select").value
 
-  var url = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semester + '/courses/' + department
+  var url = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semesterValue + '/courses/' + departmentValue
 
   // Ping MetaLab api
   fetch(url)
@@ -102,29 +103,31 @@ search_btn.onclick = () => {
           unit_string = "units"
         }
 
-        var classUrl = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semester + '/classes/' + subject + '-' + catalog_number
+        var classUrl = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semesterValue + '/classes/' + subject + '-' + catalog_number
         classUrl = `"${classUrl}"`
-        // console.log(classUrl)
 
-        // Create concatenation string for the class listing
-        var class_concat = `${subject} ${catalog_number} - ${title} (${units} ${unit_string})`
-        // console.log(class_concat)
+        // Create parent div element
+        var parentDiv = document.createElement("div")
+        parentDiv.id = `parentDiv-${i}`
+        document.querySelector("#class_listings").appendChild(parentDiv)
 
         // Create flex box element and append it to #class_listings id
         var flex = document.createElement("div")
         flex.classList.add("flex")
-        document.querySelector("#class_listings").appendChild(flex)
+        flex.id= `flexbox-${i}`
+        document.querySelector(`#parentDiv-${i}`).appendChild(flex)
 
         // Create play button element and append it to #class_listings id
         var play_button = document.createElement("input")
         play_button.src = "assets/play 1.svg"
         play_button.type = "image"
         play_button.id = `playbutton-class-content${i}`
-        document.querySelector("#class_listings").appendChild(play_button)
+        document.querySelector(`#flexbox-${i}`).appendChild(play_button)
 
         // Create label element and append it to #class_listings id
         var class_listing = document.createElement("label")
-        class_listing.innerHTML = class_concat;
+        var class_title = `${subject} ${catalog_number} - ${title} (${units} ${unit_string})`
+        class_listing.innerHTML = class_title;
         class_listing.classList.add("pl-2")
         class_listing.classList.add("cursor-pointer")
         class_listing.classList.add("font-normal")
@@ -132,15 +135,19 @@ search_btn.onclick = () => {
         class_listing.classList.add("text-lg")
         class_listing.classList.add("leading-7")
         class_listing.id = `class-content${i}`
-        class_listing.setAttribute('onclick', `generateCourseTable(this.id, ${section_number}, ${classUrl}); this.onclick=null;`)
-        document.querySelector("#class_listings").appendChild(class_listing)
+        class_listing.setAttribute('onclick', `generateCourseTable(this.id, this, ${classUrl})`)
+        document.querySelector(`#flexbox-${i}`).appendChild(class_listing)
 
       }
     });
 }
 
 
-function generateCourseTable(parentElement, section_number, classUrl) {
+function generateCourseTable(parentElement, thisTest, classUrl) {
+  classListingsElement = thisTest.parentElement.parentElement
+  var classId = classListingsElement.id
+  console.log(classId)
+  
   console.log(parentElement)
   // console.log(this)
   // console.log(section_number)
@@ -160,7 +167,7 @@ function generateCourseTable(parentElement, section_number, classUrl) {
       var courseTable = document.createElement("table")
       courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base", "cursor-auto")
       courseTable.id = `classtable${parentElement}`
-      document.querySelector(`#${parentElement}`).appendChild(courseTable)
+      document.querySelector(`#${classId}`).appendChild(courseTable)
 
       // Create table header row element
       var courseRow = document.createElement("tr")
