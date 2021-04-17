@@ -144,14 +144,19 @@ search_btn.onclick = () => {
 }
 
 function collapseTable(parentElement, thisTest) {
+  // Rotate the arrow down when clicked
+  var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
+
   var tableElement = thisTest.parentElement.nextElementSibling
   if (tableElement.style.display === "table") {
+    playButtonSelector.classList.remove("transform", "rotate-90")
     tableElement.style.display = "none";
   } else {
+    playButtonSelector.classList.add("transform", "rotate-90")
     tableElement.style.display = "table";
   }
-}
 
+}
 
 function generateCourseTable(parentElement, thisTest, classUrl) {
   // searchButtonCounter++
@@ -160,13 +165,14 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
   var classId = classListingsElement.id
   console.log(parentElement)
 
+  // Rotate the arrow down when clicked
+  var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
+  playButtonSelector.classList.add("transform", "rotate-90")
+
   // Remove onclick function once class is clicked
   thisTest.removeAttribute("onclick");
 
 
-  // Rotate the arrow down when clicked
-  var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
-  playButtonSelector.classList.add("transform", "rotate-90")
 
   // Fetch classes for selected semester and department
   fetch(classUrl)
@@ -384,6 +390,8 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         }
 
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
+
+
       }
     }
     );
