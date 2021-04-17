@@ -99,9 +99,9 @@ search_btn.onclick = () => {
         var term = data.courses[i].term;
         var title = data.courses[i].title;
         var units = data.courses[i].units;
-        var unit_string = "unit"
+        var unit_string = "Unit"
         if (units > 1) {
-          unit_string = "units"
+          unit_string = "Units"
         }
 
         var classUrl = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semesterValue + '/classes/' + subject + '-' + catalog_number
@@ -110,6 +110,7 @@ search_btn.onclick = () => {
         // Create parent div element
         var parentDiv = document.createElement("div")
         parentDiv.id = `parentDiv-${i}`
+        parentDiv.classList.add("pb-2")
         document.querySelector("#class_listings").appendChild(parentDiv)
 
         // Create flex box element and append it to #class_listings id
@@ -135,6 +136,7 @@ search_btn.onclick = () => {
         class_listing.classList.add("font-roboto")
         class_listing.classList.add("text-lg")
         class_listing.classList.add("leading-7")
+        // class_listing.classList.add("font-medium")
         class_listing.id = `class-content${i}`
         class_listing.setAttribute('onclick', `generateCourseTable(this.id, this, ${classUrl})`)
         document.querySelector(`#flexbox-${i}`).appendChild(class_listing)
@@ -182,7 +184,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
       // Create table element
       var courseTable = document.createElement("table")
-      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-3", "mb-6", "text-base")
+      courseTable.classList.add("border", "border-solid", "rounded-sm", "mt-4", "mb-3", "text-base")
       courseTable.id = `classtable${parentElement}`
       courseTable.style.display = "table";
       document.querySelector(`#${classId}`).appendChild(courseTable)
@@ -199,42 +201,52 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader0)
 
       var courseHeader1 = document.createElement("th")
+      courseHeader1.classList.add("font-semibold")
       courseHeader1.innerHTML = "Session"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader1)
 
       var courseHeader2 = document.createElement("th")
+      courseHeader2.classList.add("font-semibold")
       courseHeader2.innerHTML = "Section"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader2)
 
       var courseHeader3 = document.createElement("th")
+      courseHeader3.classList.add("font-semibold")
       courseHeader3.innerHTML = "Class #"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader3)
 
       var courseHeader4 = document.createElement("th")
+      courseHeader4.classList.add("font-semibold")
       courseHeader4.innerHTML = "Status"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader4)
 
       var courseHeader5 = document.createElement("th")
+      courseHeader5.classList.add("font-semibold")
       courseHeader5.innerHTML = "Open Seats"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader5)
 
       var courseHeader6 = document.createElement("th")
+      courseHeader6.classList.add("font-semibold")
       courseHeader6.innerHTML = "Type"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader6)
 
       var courseHeader7 = document.createElement("th")
+      courseHeader7.classList.add("font-semibold")
       courseHeader7.innerHTML = "Location"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader7)
 
       var courseHeader8 = document.createElement("th")
+      courseHeader8.classList.add("font-semibold")
       courseHeader8.innerHTML = "Days"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader8)
 
       var courseHeader9 = document.createElement("th")
+      courseHeader9.classList.add("font-semibold")
       courseHeader9.innerHTML = "Time"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader9)
 
       var courseHeader10 = document.createElement("th")
+      courseHeader10.classList.add("font-semibold")
       courseHeader10.innerHTML = "Instructor"
       document.querySelector(`#tablerow${parentElement}`).appendChild(courseHeader10)
 
