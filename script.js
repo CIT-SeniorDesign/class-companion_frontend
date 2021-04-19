@@ -99,9 +99,9 @@ search_btn.onclick = () => {
         var term = data.courses[i].term;
         var title = data.courses[i].title;
         var units = data.courses[i].units;
-        var unit_string = "Unit"
+        var unit_string = "unit"
         if (units > 1) {
-          unit_string = "Units"
+          unit_string = "units"
         }
 
         var classUrl = 'https://api.metalab.csun.edu/curriculum/api/2.0/terms/' + semesterValue + '/classes/' + subject + '-' + catalog_number
@@ -347,7 +347,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         // Create table data elements
         var tableElements = []
-        var tableDataContent = [`<input type="checkbox">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+        var tableDataContent = [`<input type="checkbox" id="checkBox${i}">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
 
 
         for (var num = 0; num < 11; num++) {
@@ -403,8 +403,20 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
 
+        // Add event listener to all checkboxes
+        var checkBoxSelector = document.querySelector(`#checkBox${i}`)
+        // Add class number to notification section when checkbox is clicked
+        checkBoxSelector.addEventListener("click", (event) => {
+          var classNumber = event.target.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML
+          console.log(classNumber)
+        })
 
       }
     }
+
+
     );
+
+
 }
+
