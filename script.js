@@ -136,7 +136,7 @@ search_btn.onclick = () => {
         class_listing.classList.add("font-roboto")
         class_listing.classList.add("text-lg")
         class_listing.classList.add("leading-7")
-        // class_listing.classList.add("font-medium")
+        class_listing.classList.add("font-medium")
         class_listing.id = `class-content${i}`
         class_listing.setAttribute('onclick', `generateCourseTable(this.id, this, ${classUrl})`)
         document.querySelector(`#flexbox-${i}`).appendChild(class_listing)
