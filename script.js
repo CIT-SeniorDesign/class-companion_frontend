@@ -1,3 +1,5 @@
+var b = 0
+
 // Generate the different semester and year combinations
 generateSemesterAndYear()
 
@@ -46,7 +48,9 @@ function clearInputs() {
   resetButton.onclick = () => {
     document.querySelector("#semester-select").value = ""
     document.querySelector("#department-select").value = ""
-    document.querySelector("#class_listings").innerHTML = '';
+    document.querySelector("#class_listings").innerHTML = ''
+    document.querySelector("#selectedClasses").innerHTML = ''
+    b = 0
   }
 }
 
@@ -347,7 +351,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         // Create table data elements
         var tableElements = []
-        var tableDataContent = [`<input type="checkbox" id="checkBox${i}">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+        var tableDataContent = [`<input type="checkbox" id="${parentElement}_checkBox${i}">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
 
 
         for (var num = 0; num < 11; num++) {
@@ -404,11 +408,35 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
 
         // Add event listener to all checkboxes
-        var checkBoxSelector = document.querySelector(`#checkBox${i}`)
+        var checkBoxSelector = document.querySelector(`#${parentElement}_checkBox${i}`)
         // Add class number to notification section when checkbox is clicked
+
+
+
         checkBoxSelector.addEventListener("click", (event) => {
+          // Get the class number of the selected checkbox
           var classNumber = event.target.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML
-          console.log(classNumber)
+          var classNumberString = classNumber.toString()
+          var selectedClassesSelector = document.querySelector("#selectedClasses")
+          var selectedClassesArray = []
+          b++
+
+          // Checkbox logic
+          if (event.target.checked == true) {
+            selectedClassesArray[b] = classNumber
+            var spanElement = document.createElement("span")
+            if (b == 1) {
+              spanElement.innerHTML = `${selectedClassesArray[b]}`
+            } else {
+              spanElement.innerHTML = `, ${selectedClassesArray[b]}`
+            }
+            console.log(b)
+            selectedClassesSelector.appendChild(spanElement)
+            // selectedClassesSelector.innerHTML += `${selectedClassesArray[i]}, `
+          }
+          else {
+            selectedClassesSelector.removeChild(selectedClassesSelector.lastChild)
+          }
         })
 
       }
