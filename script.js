@@ -432,14 +432,13 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
             } else {
               spanElement.innerHTML = `, ${selectedClassesArray[checkboxCounter]}`
             }
-            console.log(checkboxCounter)
             selectedClassesSelector.appendChild(spanElement)
-            // selectedClassesSelector.innerHTML += `${selectedClassesArray[i]}, `
+            console.log(checkboxCounter)
           }
           else {
             checkboxCounter -= 2
             console.log(checkboxCounter)
-            selectedClassesSelector.removeChild(selectedClassesSelector.lastChild)
+            selectedClassesSelector.removeChild(Array.from(selectedClassesSelector.childNodes).find(v => v.innerHTML == `, ${classNumber}` || v.innerHTML == classNumber))
           }
         })
 
