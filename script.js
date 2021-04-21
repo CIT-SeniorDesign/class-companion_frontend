@@ -1,4 +1,4 @@
-var b = 0
+var checkboxCounter = 0
 
 // Generate the different semester and year combinations
 generateSemesterAndYear()
@@ -50,7 +50,7 @@ function clearInputs() {
     document.querySelector("#department-select").value = ""
     document.querySelector("#class_listings").innerHTML = ''
     document.querySelector("#selectedClasses").innerHTML = ''
-    b = 0
+    checkboxCounter = 0
   }
 }
 
@@ -68,6 +68,8 @@ search_btn.onclick = () => {
   // If search button counter is greater than 1, then clear any existing class listings
   if (searchButtonCounter > 1) {
     document.querySelector("#class_listings").innerHTML = '';
+    // document.querySelector("#selectedClasses").innerHTML = '';
+    // b = 0
   }
 
   // Construct url to ping MetaLab api, given semester and department inputs
@@ -419,22 +421,24 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
           var classNumberString = classNumber.toString()
           var selectedClassesSelector = document.querySelector("#selectedClasses")
           var selectedClassesArray = []
-          b++
+          checkboxCounter++
 
           // Checkbox logic
           if (event.target.checked == true) {
-            selectedClassesArray[b] = classNumber
+            selectedClassesArray[checkboxCounter] = classNumber
             var spanElement = document.createElement("span")
-            if (b == 1) {
-              spanElement.innerHTML = `${selectedClassesArray[b]}`
+            if (checkboxCounter == 1) {
+              spanElement.innerHTML = `${selectedClassesArray[checkboxCounter]}`
             } else {
-              spanElement.innerHTML = `, ${selectedClassesArray[b]}`
+              spanElement.innerHTML = `, ${selectedClassesArray[checkboxCounter]}`
             }
-            console.log(b)
+            console.log(checkboxCounter)
             selectedClassesSelector.appendChild(spanElement)
             // selectedClassesSelector.innerHTML += `${selectedClassesArray[i]}, `
           }
           else {
+            checkboxCounter -= 2
+            console.log(checkboxCounter)
             selectedClassesSelector.removeChild(selectedClassesSelector.lastChild)
           }
         })
