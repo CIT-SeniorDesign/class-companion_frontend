@@ -347,7 +347,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         // Create table data row
         var tableDataRow = document.createElement("tr")
-        tableDataRow.classList.add("divide-x-1", "border-b-1")
+        tableDataRow.classList.add("divide-x-1", "border-b-1", "group")
         tableDataRow.id = `dataRow${parentElement}${i}`
         document.querySelector(`#classtable${parentElement}`).appendChild(tableDataRow)
 
@@ -358,6 +358,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         for (var num = 0; num < 11; num++) {
           tableElements[num] = document.createElement("td")
+          tableElements[num].classList.add("group-hover:bg-red-100")
 
           // Get room number coordinates
           // if (num < 11) {
