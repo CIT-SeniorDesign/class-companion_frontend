@@ -358,7 +358,11 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         for (var num = 0; num < 11; num++) {
           tableElements[num] = document.createElement("td")
-          tableElements[num].classList.add("group-hover:bg-red-100")
+          tableElements[num].classList.add("group-hover:bg-yellow-100")
+          tableElements[num].addEventListener("click",(event) =>{
+            var checkbox =  event.target.parentElement.firstChild.firstChild
+            checkbox.click()
+          })
 
           // Get room number coordinates
           // if (num < 11) {
