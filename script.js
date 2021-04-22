@@ -359,10 +359,13 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         for (var num = 0; num < 11; num++) {
           tableElements[num] = document.createElement("td")
           tableElements[num].classList.add("group-hover:bg-yellow-100")
-          tableElements[num].addEventListener("click",(event) =>{
-            var checkbox =  event.target.parentElement.firstChild.firstChild
-            checkbox.click()
-          })
+
+          // Click on anything in row and it'll select the checkbox of that row
+          // tableElements[num].addEventListener("click",(event) =>{
+          //   var check =  event.target.parentElement.firstChild.firstChild
+          //   console.log(check)
+          //   check.click()
+          // })
 
           // Get room number coordinates
           // if (num < 11) {
