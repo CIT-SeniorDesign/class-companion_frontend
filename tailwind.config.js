@@ -23,14 +23,19 @@ module.exports = {
     extend: {
       fontFamily: {
         hind: "Hind",
-        montserrat: "Montserrat"
+        montserrat: "Montserrat",
+        roboto: "Roboto"
       },
       fontSize: {
-        logo: '38px'
+        logo: '40px',
+        section_header: '24px'
       },
       colors: {
         primary: '#D22030',
-        secondary: '#6D7275'
+        secondary: '#6D7275',
+        input_box: '#CCCCCC',
+        notify_btn: '#EBEBE4',
+        table_header: '#B9B9B9'
       },
       borderWidth: {
         1: '1px'

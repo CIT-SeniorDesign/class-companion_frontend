@@ -50,7 +50,9 @@
   },
   "scripts": {
     "build": "postcss style.css -o public/build/tailwind.css",
-    "format": "prettier --write '*.html'"
+    "format": "prettier --write '*.html'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
