@@ -353,7 +353,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
 
         // Create table data elements
         var tableElements = []
-        var tableDataContent = [`<input type="checkbox" id="${parentElement}_checkBox${i}">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
+        var tableDataContent = [`<input type="checkbox" class="transform scale-125" id="${parentElement}_checkBox${i}">`, "1", section_number, class_number, status, open_seats, class_type, location, days, `${meeting_time}`, instructors]
 
 
         for (var num = 0; num < 11; num++) {
