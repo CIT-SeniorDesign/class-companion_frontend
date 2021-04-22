@@ -9,6 +9,14 @@
     margin: 0 5px;
   }
 
+  table {
+    empty-cells: hide;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
   h1 {
     font-size: 3rem;
     line-height: 59px;
@@ -17,6 +25,10 @@
   h2 {
     font-size: 1.875rem;
     line-height: 48px;
+  }
+
+  .w-class_search {
+    width: 262px;
   }
 
   .content-grid {
@@ -46,10 +58,26 @@
   }
 
   .nav-button {
-    @apply font-montserrat font-medium text-black text-2xl border-b-2 border-transparent;
+    @apply font-montserrat font-medium text-black text-section_header border-b-2 border-transparent;
   }
 
   .nav-hover {
     @apply hover:border-primary;
+  }
+
+  .section-header {
+    @apply font-montserrat font-bold text-2xl text-black;
+  }
+
+  .section-explanation {
+    @apply font-montserrat font-normal text-base leading-5 text-black;
+  }
+
+  .input-text {
+    @apply font-hind text-base text-black;
+  }
+
+  .dash-btn {
+    @apply font-hind font-medium text-base text-center bg-primary text-white rounded-lg w-max h-10 px-3;
   }
 }
