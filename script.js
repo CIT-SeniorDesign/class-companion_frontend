@@ -360,6 +360,13 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
           tableElements[num] = document.createElement("td")
           tableElements[num].classList.add("group-hover:bg-yellow-100")
 
+          if (num == 0) {
+            tableElements[num].addEventListener("click",(event) => {
+              var checkbox = event.target.firstChild
+              checkbox.click()
+            })
+          }
+
           // Click on anything in row and it'll select the checkbox of that row
           // tableElements[num].addEventListener("click",(event) =>{
           //   var check =  event.target.parentElement.firstChild.firstChild
