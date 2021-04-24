@@ -50,6 +50,7 @@ function clearInputs() {
     document.querySelector("#department-select").value = ""
     document.querySelector("#class_listings").innerHTML = ''
     document.querySelector("#selectedClasses").innerHTML = ''
+    document.querySelector("#class_listings_title").style.display = "none"
     checkboxCounter = 0
   }
 }
@@ -64,6 +65,7 @@ search_btn.onclick = () => {
 
   // Increase the search button click counter
   searchButtonCounter++
+  document.querySelector("#class_listings_title").style.display = "inline"
 
   // If search button counter is greater than 1, then clear any existing class listings
   if (searchButtonCounter > 1) {
@@ -401,7 +403,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
               fetchWaldo.then((a) => {
                 console.log(a);
                 if (num == 7) {
-                  tableElements[num].innerHTML = `<a href='${a}' class="text-primary underline" target="_blank">${location}</a>`
+                  tableElements[num].innerHTML = `<a href='${a}' class="underline" target="_blank">${location}</a>`
                   document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
                 }
                 else {
