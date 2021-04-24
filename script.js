@@ -401,7 +401,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
               fetchWaldo.then((a) => {
                 console.log(a);
                 if (num == 7) {
-                  tableElements[num].innerHTML = `<a href='${a}' target="_blank">${location}</a>`
+                  tableElements[num].innerHTML = `<a href='${a}' class="text-primary underline" target="_blank">${location}</a>`
                   document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
                 }
                 else {
