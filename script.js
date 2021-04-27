@@ -362,8 +362,9 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
           tableElements[num] = document.createElement("td")
           tableElements[num].classList.add("group-hover:bg-yellow-100")
 
+
           if (num == 0) {
-            tableElements[num].addEventListener("click",(event) => {
+            tableElements[num].addEventListener("click", (event) => {
               var checkbox = event.target.firstChild
               checkbox.click()
             })
@@ -383,45 +384,42 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
             document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
           }
           else {
-            var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
-            console.log(waldoApiUrl)
+            if (num == 7) {
+              tableElements[num].id = `location_${parentElement}${i}`
+              tableElements[num].innerHTML = tableDataContent[num]
+              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
 
-            var latitude
-            var longitude
-            var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+              var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
+              console.log(waldoApiUrl)
 
-            const fetchWaldo = fetch(waldoApiUrl)
-              .then(response => response.json())
-              .then(data => {
-                latitude = data.rooms[0].latitude
-                longitude = data.rooms[0].longitude
-                googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
-                return googleMapsURL
-              });
+              var latitude
+              var longitude
+              var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 
-            const printAddress = (tableElements, num, location, parentElement, i) => {
-              fetchWaldo.then((a) => {
-                console.log(a);
-                if (num == 7) {
-                  tableElements[num].innerHTML = `<a href='${a}' class="underline" target="_blank">${location}</a>`
-                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                }
-                else {
-                  tableElements[num].innerHTML = tableDataContent[num]
-                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                }
-              });
-            };
-            // tableElements[num].innerHTML = tableDataContent[num]
-            // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-            printAddress(tableElements, num, location, parentElement, i);
+              const fetchWaldo = fetch(waldoApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                  latitude = data.rooms[0].latitude
+                  longitude = data.rooms[0].longitude
+                  googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+                  return googleMapsURL
+                });
+
+              const printCoordinates = (tableElements, num, location, parentElement, i) => {
+                fetchWaldo.then((a) => {
+                  console.log(a);
+                  if (num == 7) {
+                    document.querySelector(`#location_${parentElement}${i}`).innerHTML = `<a href='${a}' class="underline" target="_blank">${location}</a>`
+                  }
+                });
+              };
+              printCoordinates(tableElements, num, location, parentElement, i);
+            }
+            else {
+              tableElements[num].innerHTML = tableDataContent[num]
+              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+            }
           }
-          // }
-          // else {
-          // tableElements[num].innerHTML = tableDataContent[num]
-          // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-          // }
-
         }
 
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
