@@ -279,7 +279,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         }
         else {
           instructors = data.classes[i].instructors[0].instructor
-          instructors = instructors.replace('@csun.edu', '').replace('.', ' ')
+          instructors = instructors.replace('@csun.edu', '').replace('.', ' ').replace('@my.csun.edu', '').replace(/(\.[0-9][0-9][0-9])|(\.[0-9][0-9])|(\.[0-9])|(\@csun.edu)/, '')
           const words = instructors.split(" ");
 
           for (let i = 0; i < words.length; i++) {
