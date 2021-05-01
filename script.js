@@ -50,6 +50,7 @@ function clearInputs() {
     document.querySelector("#department-select").value = ""
     document.querySelector("#class_listings").innerHTML = ''
     document.querySelector("#selectedClasses").innerHTML = ''
+    document.querySelector("#class_listings_title").style.display = "none"
     checkboxCounter = 0
   }
 }
@@ -64,6 +65,7 @@ search_btn.onclick = () => {
 
   // Increase the search button click counter
   searchButtonCounter++
+  document.querySelector("#class_listings_title").style.display = "inline"
 
   // If search button counter is greater than 1, then clear any existing class listings
   if (searchButtonCounter > 1) {
@@ -130,6 +132,7 @@ search_btn.onclick = () => {
         play_button.src = "assets/play 1.svg"
         play_button.type = "image"
         play_button.id = `playbutton-class-content${i}`
+        play_button.setAttribute('onclick', `generateCourseTable(this.nextElementSibling.id, this.nextElementSibling, ${classUrl})`)
         document.querySelector(`#flexbox-${i}`).appendChild(play_button)
 
         // Create label element and append it to #class_listings id
@@ -173,13 +176,15 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
   var classId = classListingsElement.id
   console.log(parentElement)
 
+  var playButtonElement = thisTest.previousElementSibling
+
   // Rotate the arrow down when clicked
   var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
   playButtonSelector.classList.add("transform", "rotate-90")
 
   // Remove onclick function once class is clicked
   thisTest.removeAttribute("onclick");
-
+  playButtonElement.removeAttribute("onclick")
 
 
   // Fetch classes for selected semester and department
@@ -277,7 +282,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         }
         else {
           instructors = data.classes[i].instructors[0].instructor
-          instructors = instructors.replace('@csun.edu', '').replace('.', ' ')
+          instructors = instructors.replace('@csun.edu', '').replace('.', ' ').replace('@my.csun.edu', '').replace(/(\.[0-9][0-9][0-9])|(\.[0-9][0-9])|(\.[0-9])|(\@csun.edu)/, '')
           const words = instructors.split(" ");
 
           for (let i = 0; i < words.length; i++) {
@@ -360,8 +365,9 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
           tableElements[num] = document.createElement("td")
           tableElements[num].classList.add("group-hover:bg-yellow-100")
 
+
           if (num == 0) {
-            tableElements[num].addEventListener("click",(event) => {
+            tableElements[num].addEventListener("click", (event) => {
               var checkbox = event.target.firstChild
               checkbox.click()
             })
@@ -381,48 +387,46 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
             document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
           }
           else {
-            var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
-            console.log(waldoApiUrl)
+            if (num == 7) {
+              tableElements[num].id = `location_${parentElement}${i}`
+              tableElements[num].innerHTML = tableDataContent[num]
+              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
 
-            var latitude
-            var longitude
-            var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+              var waldoApiUrl = `https://api.metalab.csun.edu/waldo/1.0/rooms?room=${location}`
+              console.log(waldoApiUrl)
 
-            const fetchWaldo = fetch(waldoApiUrl)
-              .then(response => response.json())
-              .then(data => {
-                latitude = data.rooms[0].latitude
-                longitude = data.rooms[0].longitude
-                googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
-                return googleMapsURL
-              });
+              var latitude
+              var longitude
+              var googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 
-            const printAddress = (tableElements, num, location, parentElement, i) => {
-              fetchWaldo.then((a) => {
-                console.log(a);
-                if (num == 7) {
-                  tableElements[num].innerHTML = `<a href='${a}' target="_blank">${location}</a>`
-                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                }
-                else {
-                  tableElements[num].innerHTML = tableDataContent[num]
-                  document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-                }
-              });
-            };
-            // tableElements[num].innerHTML = tableDataContent[num]
-            // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-            printAddress(tableElements, num, location, parentElement, i);
+              const fetchWaldo = fetch(waldoApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                  latitude = data.rooms[0].latitude
+                  longitude = data.rooms[0].longitude
+                  googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+                  return googleMapsURL
+                });
+
+              const printCoordinates = (tableElements, num, location, parentElement, i) => {
+                fetchWaldo.then((a) => {
+                  console.log(a);
+                  if (num == 7) {
+                    document.querySelector(`#location_${parentElement}${i}`).innerHTML = `<a href='${a}' class="underline" target="_blank">${location}</a>`
+                  }
+                });
+              };
+              printCoordinates(tableElements, num, location, parentElement, i);
+            }
+            else {
+              tableElements[num].innerHTML = tableDataContent[num]
+              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
+            }
           }
-          // }
-          // else {
-          // tableElements[num].innerHTML = tableDataContent[num]
-          // document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-          // }
-
         }
 
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
+        playButtonElement.setAttribute('onclick', `collapseTable(this.nextElementSibling.id, this.nextElementSibling)`)
 
         // Add event listener to all checkboxes
         var checkBoxSelector = document.querySelector(`#${parentElement}_checkBox${i}`)

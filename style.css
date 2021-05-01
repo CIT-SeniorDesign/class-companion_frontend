@@ -9,11 +9,19 @@
     margin: 0 5px;
   }
 
+  td a:link {
+    color: #0000ee;
+  }
+  td a:visited {
+    color: #551a8b;
+  }
+
   table {
     empty-cells: hide;
   }
 
-  th, td {
+  th,
+  td {
     padding: 8px;
   }
 
