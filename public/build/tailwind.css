@@ -1,6 +1,6 @@
 /* ./your-css-folder/styles.css */
 
-/* ! tailwindcss v2.1.1 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v2.1.2 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -32876,11 +32876,20 @@ nav a {
   margin: 0 5px;
 }
 
+td a:link {
+  color: #0000ee;
+}
+
+td a:visited {
+  color: #551a8b;
+}
+
 table {
   empty-cells: hide;
 }
 
-th, td {
+th,
+  td {
   padding: 8px;
 }
 
