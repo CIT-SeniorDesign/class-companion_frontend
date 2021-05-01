@@ -132,6 +132,7 @@ search_btn.onclick = () => {
         play_button.src = "assets/play 1.svg"
         play_button.type = "image"
         play_button.id = `playbutton-class-content${i}`
+        play_button.setAttribute('onclick', `generateCourseTable(this.nextElementSibling.id, this.nextElementSibling, ${classUrl})`)
         document.querySelector(`#flexbox-${i}`).appendChild(play_button)
 
         // Create label element and append it to #class_listings id
@@ -175,13 +176,15 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
   var classId = classListingsElement.id
   console.log(parentElement)
 
+  var playButtonElement = thisTest.previousElementSibling
+
   // Rotate the arrow down when clicked
   var playButtonSelector = document.querySelector(`#playbutton-${parentElement}`)
   playButtonSelector.classList.add("transform", "rotate-90")
 
   // Remove onclick function once class is clicked
   thisTest.removeAttribute("onclick");
-
+  playButtonElement.removeAttribute("onclick")
 
 
   // Fetch classes for selected semester and department
@@ -423,6 +426,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         }
 
         thisTest.setAttribute('onclick', `collapseTable(this.id, this)`)
+        playButtonElement.setAttribute('onclick', `collapseTable(this.nextElementSibling.id, this.nextElementSibling)`)
 
         // Add event listener to all checkboxes
         var checkBoxSelector = document.querySelector(`#${parentElement}_checkBox${i}`)
