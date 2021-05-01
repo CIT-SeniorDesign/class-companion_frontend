@@ -16,7 +16,7 @@
 
 	<script src="script.js"
 					defer></script>
-					<title>Dashboard</title>
+	<title>Dashboard</title>
 
 </head>
 
@@ -189,45 +189,84 @@
 
 				<!-- Selected Classes -->
 				<div class="input-text pt-3 pb-1 font-medium">Selected Classes:</div>
-				<div class="input-text" id="selectedClasses"></div>
+				<div class="input-text"
+						 id="selectedClasses"></div>
 
-				<!-- Browser Notifications -->
-				<div class="input-text pt-3 pb-1 font-medium">Browser Notifications</div>
-				<div class="flex flex-row space-x-2 justify-end">
-					<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
-					</button>
-					<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
-					</button>
+				<!-- Email Login -->
+				<div class=" mt-3">
+					<label for="email-input"
+								 class="input-text pt-3 pb-1 font-medium">Email Address</label>
+					<input name="email-input"
+								 id="email-input"
+								 type="email"
+								 placeholder="CSUN Email Address"
+								 class="input-text border-1 border-input_box px-2 w-full">
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Login via Email</button>
 				</div>
 
-				<!-- Email Input -->
-				<label for="email-input"
-							 class="input-text pt-3 pb-1 font-medium">Email Address</label>
-				<input name="email-input"
-							 id="email-input"
-							 type="email"
-							 class="input-text border-1 border-input_box px-1">
-				</input>
-				<!-- Phone Input -->
-				<label for="phone-input"
-							 class="input-text pt-3 pb-1 font-medium">Phone Number</label>
-				<input name="phone-input"
-							 id="phone-input"
-							 type="tel"
-							 class="input-text border-1 border-input_box px-1">
-				</input>
-				<!-- Save Notification Settings Button -->
-				<button type="button"
-								onclick=""
-								class="dash-btn mt-4 w-full">Save Notification Settings</button>
+				<!-- Hidden Section -->
+				<div class="hidden">
+					<!-- Email Notifications -->
+					<div class="input-text pt-3 pb-1 font-medium">Email Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
+						</button>
+					</div>
+					<!-- Browser Notifications -->
+					<div class="input-text pt-5 pb-1 font-medium">Browser Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
+						</button>
+					</div>
 
-				<!-- End of Column 1 Flexbox -->
+					<!-- Email Input -->
+					<!-- <label for="email-input"
+								 class="input-text pt-3 pb-1 font-medium">Email Address</label>
+					<input name="email-input"
+								 id="email-input"
+								 type="email"
+								 class="input-text border-1 border-input_box px-1">
+					</input> -->
+					<!-- <button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Save Notification Settings</button> -->
+
+					<!-- Phone Notifications -->
+					<div class="input-text pt-5 pb-1 font-medium">Phone Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7">Disable
+						</button>
+					</div>
+					<!-- <label for="phone-input"
+								 class="input-text pt-5 pb-1 font-medium">Phone Number</label> -->
+					<input name="phone-input"
+								 id="phone-input"
+								 type="tel"
+								 placeholder="Phone Number"
+								 class="input-text border-1 border-input_box px-1 mt-3 w-full">
+					</input>
+					<!-- Save Notification Settings Button -->
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Save Notification Settings</button>
+
+					<!-- End of Column 1 Flexbox -->
+				</div>
 			</div>
 
 			<!-- Start of Column 2 Flexbox -->
 			<div class="flex flex-col w-4/5 pl-10">
 				<!-- Class Listings Section -->
-				<div class="section-header pb-4 self-center hidden " id="class_listings_title">Course Listings</div>
+				<div class="section-header pb-4 self-center hidden "
+						 id="class_listings_title">Course Listings</div>
 				<!-- <input type="image"
 								 src="assets/play 1.svg"
 								 class="inline"></input> -->
