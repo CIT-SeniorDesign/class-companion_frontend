@@ -462,7 +462,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
                     }
                     else {
                     var spanElement = document.createElement("span")
-                    spanElement.innerHTML = ` <a href='${a[0]}' class="underline" target="_blank">(${a[1]})</a>`
+                      spanElement.innerHTML = ` (<a href='${a[0]}' class="underline" target="_blank">${a[1]}</a>)`
                     document.querySelector(`#instructor_${parentElement}${i}`).appendChild(spanElement)
                     }
                   }
