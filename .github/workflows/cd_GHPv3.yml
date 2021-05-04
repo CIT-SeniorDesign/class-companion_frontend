@@ -25,6 +25,7 @@ jobs:
           mv .gitignore dist
           mv README.md dist
           mv assets dist
+          mv dashboard.html dist
           mv index.html dist
           mv public dist
           mv style.css dist
