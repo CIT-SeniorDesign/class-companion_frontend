@@ -27,6 +27,7 @@ jobs:
           mv assets dist
           mv dashboard.html dist
           mv index.html dist
+          mv script.js dist
           mv public dist
           mv style.css dist
           ls -la
