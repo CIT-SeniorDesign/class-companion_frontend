@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+
+<head>
+	<!-- ... -->
+	<meta charset="UTF-8" />
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0" />
+	<link href="public/build/tailwind.css"
+				rel="stylesheet">
+
+	<link rel="preconnect"
+				href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+				rel="stylesheet">
+
+	<script src="script.js"
+					defer></script>
+	<title>Dashboard</title>
+
+</head>
+
+<body>
+	<!-- Full navbar -->
+	<nav class="navbar-container">
+		<!-- Navbar left side-->
+		<div class="navbar">
+			<a href="index.html"
+				 class="font-montserrat font-bold text-logo text-primary px-0">
+				<img src="assets/CSUN Logo.png"
+						 class="pr-2 pb-2 inline-flex"><span class="">Class Companion</span></a>
+
+			<!-- Navbar right side -->
+			<span>
+				<a href="index.html"
+					 class="nav-button nav-hover mr-11">Home</a>
+				<a href="dashboard.html"
+					 class="nav-button nav-hover">Dashboard</a>
+		</div>
+		</span>
+	</nav>
+
+	<!-- Content -->
+	<div class="mx-6 md:mx-12 xl:mx-64 mt-10">
+
+		<!-- Start of Row Flexbox -->
+		<div class="flex flex-row">
+			<!-- Start of Column 1 Flexbox -->
+			<div class="flex flex-col w-1/5">
+				<!-- Class Search Section -->
+				<!-- Class search heading -->
+				<div class="section-header pb-2">Class Search</div>
+				<div class="section-explanation pb-2">Select a semester and a department to search for classes.</div>
+
+				<!-- Semester input -->
+				<label for="semester-select"
+							 class="input-text pt-2 pb-1 font-medium">Semester</label>
+				<select name="semester"
+								id="semester-select"
+								class="input-text border-1 border-input_box px-1">
+					<!-- <option disabled
+									selected
+									value></option> -->
+				</select>
+
+				<!-- Department input -->
+				<label for="department-select"
+							 class="input-text pt-3 pb-1 font-medium">Department</label>
+				<select name="department"
+								id="department-select"
+								class="input-text border-1 border-input_box px-1">
+					<!-- <option disabled
+									selected
+									value></option> -->
+					<option value="AE">A E - Aerospace Engineering</option>
+					<option value="AM">A M - Applied Mechanics</option>
+					<option value="AAS">AAS - Asian American Studies</option>
+					<option value="ACCT">ACCT - Accounting</option>
+					<option value="AFRS">AFRS - Africana Studies</option>
+					<option value="AIS">AIS - American Indian Studies Program</option>
+					<option value="ANTH">ANTH - Anthropology</option>
+					<option value="ARAB">ARAB - Arabic</option>
+					<option value="ARMN">ARMN - Armenian</option>
+					<option value="ART">ART - Arts</option>
+					<option value="ASTR">ASTR - Astronomy</option>
+					<option value="ATHL">ATHL - Intercollegiate Athletics</option>
+					<option value="BIOL">BIOL - Biology</option>
+					<option value="BLAW">BLAW - Business Law</option>
+					<option value="BUS">BUS - Business</option>
+					<option value="CE">C E - Civil Engineering</option>
+					<option value="CADV">CADV - Child and Adolescent Development</option>
+					<option value="CAS">CAS - Central American Studies</option>
+					<option value="CCE">CCE - Civic and Community Engagement</option>
+					<option value="CD">CD - Communication Disorders and Sciences</option>
+					<option value="CECS">CECS - Engineering and Computer Science</option>
+					<option value="CHS">CH S - Chicana and Chicano Studies</option>
+					<option value="CHEM">CHEM - Chemistry</option>
+					<option value="CIT">CIT - Computer Information Technology</option>
+					<option value="CJS">CJS - Criminology & Justice Studies</option>
+					<option value="CLAS">CLAS - Classics</option>
+					<option value="CM">CM - Construction Management</option>
+					<option value="COMP">COMP - Computer Science</option>
+					<option value="COMS">COMS - Communication Studies</option>
+					<option value="CTVA">CTVA - Cinema and Television Arts</option>
+					<option value="DEAF">DEAF - Deaf Studies</option>
+					<option value="EED">E ED - Elementary Education</option>
+					<option value="ECE">ECE - Electrical and Computer Engineering</option>
+					<option value="ECON">ECON - Economics</option>
+					<option value="EDUC">EDUC - Education</option>
+					<option value="ELPS">ELPS - Educational Leadership and Policy Studies</option>
+					<option value="ENGL">ENGL - English</option>
+					<option value="EOH">EOH - Environmental and Occupational Health</option>
+					<option value="EPC">EPC - Educational Psychology</option>
+					<option value="FCS">FCS - Family and Consumer Sciences</option>
+					<option value="FIN">FIN - Finance</option>
+					<option value="FLIT">FLIT - Literature in Translation and Cultures</option>
+					<option value="FREN">FREN - French</option>
+					<option value="GBUS">GBUS - Graduate Business</option>
+					<option value="GEH">GEH - General Education Honors Program</option>
+					<option value="GEOG">GEOG - Geography and Environ Studies</option>
+					<option value="GEOL">GEOL - Geological Sciences</option>
+					<option value="GWS">GWS - Gender and Women's Studies</option>
+					<option value="HHD">HHD - Health and Human Development</option>
+					<option value="HIST">HIST - History</option>
+					<option value="HSCI">HSCI - Health Sciences</option>
+					<option value="HUM">HUM - Humanities Program</option>
+					<option value="HUMN">HUMN - Humanities</option>
+					<option value="IS">IS - Information Systems</option>
+					<option value="ITAL">ITAL - Italian</option>
+					<option value="JS">J S - Jewish Studies Program</option>
+					<option value="JAPN">JAPN - Japanese</option>
+					<option value="JOUR">JOUR - Journalism</option>
+					<option value="KIN">KIN - Kinesiology</option>
+					<option value="KOR">KOR - Korean</option>
+					<option value="LING">LING - Linguistics/TESL</option>
+					<option value="LRS">LR S - Liberal Studies</option>
+					<option value="ME">M E - Mechanical Engineering</option>
+					<option value="MATH">MATH - Mathematics</option>
+					<option value="MCOM">MCOM - Mass Communication</option>
+					<option value="MGT">MGT - Management</option>
+					<option value="MKT">MKT - Marketing</option>
+					<option value="MSE">MSE - Manufacturing Systems Engineering and Manage</option>
+					<option value="MUS">MUS - Music</option>
+					<option value="NURS">NURS - Nursing</option>
+					<option value="PERS">PERS - Persian</option>
+					<option value="PHIL">PHIL - Philosophy</option>
+					<option value="PHSC">PHSC - Physical Science</option>
+					<option value="PHYS">PHYS - Physics</option>
+					<option value="POLS">POLS - Political Science</option>
+					<option value="PSY">PSY - Psychology</option>
+					<option value="PT">PT - Physical Therapy</option>
+					<option value="QS">QS - Queer Studies</option>
+					<option value="RS">R S - Religious Studies</option>
+					<option value="RE">RE - Real Estate</option>
+					<option value="RTM">RTM - Recreation and Tourism Management</option>
+					<option value="RUSS">RUSS - Russian</option>
+					<option value="SED">S ED - Secondary Education</option>
+					<option value="SBS">SBS - Social and Behavioral Sciences</option>
+					<option value="SCI">SCI - Science</option>
+					<option value="SCM">SCM - Supply Chain Management</option>
+					<option value="SOC">SOC - Sociology</option>
+					<option value="SOM">SOM - Systems and Operation&nbsp; Management</option>
+					<option value="SPAN">SPAN - Spanish</option>
+					<option value="SPED">SPED - Special Education</option>
+					<option value="SUST">SUST - Sustainability</option>
+					<option value="SWRK">SWRK - Social Work</option>
+					<option value="TH">TH - Theatre</option>
+					<option value="UNIV">UNIV - University</option>
+					<option value="URBS">URBS - Urban Studies and Planning</option>
+				</select>
+
+				<!-- Reset and Search buttons -->
+				<div class="flex flex-row space-x-2 justify-end">
+					<button type="button"
+									onclick=""
+									id="reset-btn"
+									class="dash-btn mt-4">Reset</button>
+					<button type="button"
+									onclick=""
+									id="search-btn"
+									class="dash-btn mt-4">Search</button>
+				</div>
+				</form>
+
+				<!-- Notifications Section -->
+				<div class="section-header pt-8 pb-2">Notifications</div>
+				<div class="section-explanation pb-2">Login with your email address to signup for notifications when a seat opens up for the
+					classes you selected.</div>
+
+				<!-- Selected Classes -->
+				<div class="input-text pt-3 pb-1 font-medium">Selected Classes:</div>
+				<div class="input-text"
+						 id="selectedClasses"></div>
+
+				<!-- Email Login -->
+				<div class=" mt-3">
+					<label for="email-input"
+								 class="input-text pt-3 pb-1 font-medium">Email Address</label>
+					<input name="email-input"
+								 id="email-input"
+								 type="email"
+								 placeholder="CSUN Email Address"
+								 class="input-text border-1 border-input_box px-2 w-full">
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Login via Email</button>
+				</div>
+
+				<!-- Hidden Section -->
+				<div class="hidden">
+					<!-- Email Notifications -->
+					<div class="input-text pt-3 pb-1 font-medium">Email Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
+						</button>
+					</div>
+					<!-- Browser Notifications -->
+					<div class="input-text pt-5 pb-1 font-medium">Browser Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Disable
+						</button>
+					</div>
+
+					<!-- Email Input -->
+					<!-- <label for="email-input"
+								 class="input-text pt-3 pb-1 font-medium">Email Address</label>
+					<input name="email-input"
+								 id="email-input"
+								 type="email"
+								 class="input-text border-1 border-input_box px-1">
+					</input> -->
+					<!-- <button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Save Notification Settings</button> -->
+
+					<!-- Phone Notifications -->
+					<div class="input-text pt-5 pb-1 font-medium">Phone Notifications</div>
+					<div class="flex flex-row space-x-2 justify-end">
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7 ">Enable
+						</button>
+						<button class="input-text px-1 dash-btn bg-notify_btn font-normal text-black w-full h-7">Disable
+						</button>
+					</div>
+					<!-- <label for="phone-input"
+								 class="input-text pt-5 pb-1 font-medium">Phone Number</label> -->
+					<input name="phone-input"
+								 id="phone-input"
+								 type="tel"
+								 placeholder="Phone Number"
+								 class="input-text border-1 border-input_box px-1 mt-3 w-full">
+					</input>
+					<!-- Save Notification Settings Button -->
+					<button type="button"
+									onclick=""
+									class="dash-btn mt-4 w-full">Save Notification Settings</button>
+
+					<!-- End of Column 1 Flexbox -->
+				</div>
+			</div>
+
+			<!-- Start of Column 2 Flexbox -->
+			<div class="flex flex-col w-4/5 pl-10">
+				<!-- Class Listings Section -->
+				<div class="section-header pb-4 self-center hidden "
+						 id="class_listings_title">Course Listings</div>
+				<!-- <input type="image"
+								 src="assets/play 1.svg"
+								 class="inline"></input> -->
+				<span id="class_listings">
+					<!-- <span id="course_table"></span> -->
+				</span>
+				<!-- Section Table -->
+				<!-- <table class="border border-solid rounded-sm mt-3 ">
+					<tr class="text-left divide-x-1 bg-black bg-opacity-5 border-b-1">
+						<th class=""></th>
+						<th>Session</th>
+						<th>Section</th>
+						<th>Class #</th>
+						<th>Status</th>
+						<th>Open Seats</th>
+						<th>Type</th>
+						<th>Location</th>
+						<th>Days</th>
+						<th>Time</th>
+						<th>Instructor</th>
+					</tr>
+					<tr class="divide-x-1 border-b-1">
+						<td class="text-center"><input type="checkbox"></input></td>
+						<td>Session</td>
+						<td>Section</td>
+						<td>Class #</td>
+						<td>Status</td>
+						<td>Open Seats</td>
+						<td>Type</td>
+						<td>Location</td>
+						<td>Days</td>
+						<td>Time</td>
+						<td>Instructor</td>
+					</tr>
+
+				</table> -->
+
+				<!-- End of Column 2 Flexbox -->
+			</div>
+			<!-- End of Row Flexbox -->
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="border-t-1 border-opacity-20 border-black text-center mt-10 py-5 font-montserrat font-normal ">
+		<p>Developed by Team Null</p>
+		<p>CIT Senior Design - 2021</p>
+	</footer>
+
+</body>
+
+</html>
