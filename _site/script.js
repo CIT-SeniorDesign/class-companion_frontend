@@ -273,7 +273,6 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
         var instructors = data.classes[i].instructors
         var status
         var open_seats = enrollment_cap - enrollment_count
-        var instructorRating
 
         var instructorFirstName
         var instructorLastName
@@ -290,16 +289,8 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
             words[i] = words[i][0].toUpperCase() + words[i].substr(1);
           }
 
-          // console.log(words)
-          instructorFirstName = words[0]
-          instructorLastName = words[1]
-
           words.reverse()
           instructors = words.join(", ")
-          // instructors = instructors + ` <a href="test.html">Test</a>`
-
-
-
         }
 
         // If enrollment capacity is greater than the amount of people enrolled, then print Open
@@ -374,6 +365,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
           tableElements[num] = document.createElement("td")
           tableElements[num].classList.add("group-hover:bg-yellow-100")
 
+
           if (num == 0) {
             tableElements[num].addEventListener("click", (event) => {
               var checkbox = event.target.firstChild
@@ -381,6 +373,15 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
             })
           }
 
+          // Click on anything in row and it'll select the checkbox of that row
+          // tableElements[num].addEventListener("click",(event) =>{
+          //   var check =  event.target.parentElement.firstChild.firstChild
+          //   console.log(check)
+          //   check.click()
+          // })
+
+          // Get room number coordinates
+          // if (num < 11) {
           if (location == "ONLINE" || location == "No data.") {
             tableElements[num].innerHTML = tableDataContent[num]
             document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
@@ -412,59 +413,6 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
                   console.log(a);
                   if (num == 7) {
                     document.querySelector(`#location_${parentElement}${i}`).innerHTML = `<a href='${a}' class="underline" target="_blank">${location}</a>`
-                  }
-                });
-              };
-              printCoordinates(tableElements, num, location, parentElement, i);
-            }
-            else {
-              tableElements[num].innerHTML = tableDataContent[num]
-              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-            }
-          }
-
-          if (instructors == "No data.") {
-            tableElements[num].innerHTML = tableDataContent[num]
-            document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-          }
-          else {
-            if (num == 10) {
-              tableElements[num].id = `instructor_${parentElement}${i}`
-              tableElements[num].innerHTML = tableDataContent[num]
-              document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
-
-              var rmpURL = `https://tnd3uniac2.execute-api.us-east-1.amazonaws.com/dev/getprofessor?firstName=${instructorFirstName}&lastName=${instructorLastName}`
-              console.log(rmpURL)
-              const fetchWaldo = fetch(rmpURL)
-                .then(response => response.json())
-                .then(data => {
-                  // latitude = data.rooms[0].latitude
-                  // longitude = data.rooms[0].longitude
-                  // googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
-                  // return googleMapsURL
-
-                  console.log(data)
-                  var professorLink = data.profLink
-                  var rating = data.rating
-                  var reviewCount = data.reviewCount
-                  var rmpData = [professorLink, rating, reviewCount]
-                  return rmpData
-                });
-
-              const printCoordinates = (tableElements, num, location, parentElement, i) => {
-                fetchWaldo.then((a) => {
-                  console.log(a);
-                  if (num == 10) {
-                    if (a[0] == undefined || a[1] == undefined || a[2] == undefined) {
-                      var spanElement = document.createElement("span")
-                      spanElement.innerHTML = ` <span>(No data)</span>`
-                      document.querySelector(`#instructor_${parentElement}${i}`).appendChild(spanElement)
-                    }
-                    else {
-                    var spanElement = document.createElement("span")
-                      spanElement.innerHTML = ` (<a href='${a[0]}' class="underline" target="_blank">${a[1]}</a>)`
-                    document.querySelector(`#instructor_${parentElement}${i}`).appendChild(spanElement)
-                    }
                   }
                 });
               };
