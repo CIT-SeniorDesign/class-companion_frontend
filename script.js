@@ -433,7 +433,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
               tableElements[num].innerHTML = tableDataContent[num]
               document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
 
-              var rmpURL = `https://tnd3uniac2.execute-api.us-east-1.amazonaws.com/dev/getprofessor?firstName=${instructorFirstName}&lastName=${instructorLastName}`
+              var rmpURL = `https://qzksrwndog.execute-api.us-east-1.amazonaws.com/getprofessor?firstName=${instructorFirstName}&lastName=${instructorLastName}`
               console.log(rmpURL)
               const fetchWaldo = fetch(rmpURL)
                 .then(response => response.json())
