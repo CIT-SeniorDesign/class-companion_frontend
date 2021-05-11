@@ -118,7 +118,7 @@ search_btn.onclick = () => {
         // Create parent div element
         var parentDiv = document.createElement("div")
         parentDiv.id = `parentDiv-${i}`
-        parentDiv.classList.add("pb-2")
+        parentDiv.classList.add("pb-4")
         document.querySelector("#class_listings").appendChild(parentDiv)
 
         // Create flex box element and append it to #class_listings id
@@ -433,7 +433,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
               tableElements[num].innerHTML = tableDataContent[num]
               document.querySelector(`#dataRow${parentElement}${i}`).appendChild(tableElements[num])
 
-              var rmpURL = `https://tnd3uniac2.execute-api.us-east-1.amazonaws.com/dev/getprofessor?firstName=${instructorFirstName}&lastName=${instructorLastName}`
+              var rmpURL = `https://0f8mevc54i.execute-api.us-east-1.amazonaws.com/getprofessor?firstName=${instructorFirstName}&lastName=${instructorLastName}`
               console.log(rmpURL)
               const fetchWaldo = fetch(rmpURL)
                 .then(response => response.json())
