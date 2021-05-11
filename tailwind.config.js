@@ -3,15 +3,15 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      
-      
-                                "sm": '640px',
+
+
+      "sm": '320px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      'md': '375px',
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
+      'lg': '768px',
       // => @media (min-width: 1024px) { ... }
 
       'xl': '1280px',
@@ -28,7 +28,9 @@ module.exports = {
       },
       fontSize: {
         logo: '40px',
-        section_header: '24px'
+        section_header: '24px',
+        nav: '18px',
+        class_companion: `30px`
       },
       colors: {
         primary: '#D22030',
