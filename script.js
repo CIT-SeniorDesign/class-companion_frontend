@@ -118,7 +118,7 @@ search_btn.onclick = () => {
         // Create parent div element
         var parentDiv = document.createElement("div")
         parentDiv.id = `parentDiv-${i}`
-        parentDiv.classList.add("pb-2")
+        parentDiv.classList.add("pb-4")
         document.querySelector("#class_listings").appendChild(parentDiv)
 
         // Create flex box element and append it to #class_listings id
