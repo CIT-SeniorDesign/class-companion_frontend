@@ -58,7 +58,7 @@
 
 @layer components {
   .navbar-container {
-    @apply border-b-1 border-opacity-20 border-black;
+    @apply sm:border-b-0 lg:border-b-1 lg:border-opacity-20 lg:border-black;
   }
 
   .navbar {
@@ -66,7 +66,7 @@
   }
 
   .nav-button {
-    @apply font-montserrat font-medium text-black text-section_header border-b-2 border-transparent;
+    @apply font-montserrat font-medium text-black sm:text-nav lg:text-section_header border-b-2 border-transparent;
   }
 
   .nav-hover {

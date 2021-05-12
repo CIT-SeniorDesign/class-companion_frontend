@@ -19,14 +19,14 @@
   <!-- Full navbar -->
   <nav class="navbar-container">
     <!-- Navbar left side-->
-    <div class="navbar">
+    <div class="justify-between sm:justify-between lg:justify-between max-w-full mx-6 md:mx-12 xl:mx-60 flex items-center flex-wrap">
       <a href="index.html"
          class="font-montserrat font-bold text-logo text-primary px-0">
         <img src="assets/CSUN Logo.png"
-             class="pr-2 pb-2 inline-flex" /><span class="">Class Companion</span></a>
+             class="pr-2 pb-2 inline self-center sm:mx-auto sm:block lg:mx-0 lg:inline" /><span class="sm:text-3xl lg:text-logo sm:whitespace-nowrap">Class Companion</span></a>
 
       <!-- Navbar right side -->
-      <span>
+      <span class="">
         <a href="index.html"
            class="nav-button nav-hover mr-11 border-primary">Home</a>
         <a href="dashboard.html"
@@ -37,17 +37,17 @@
 
   <!-- Content -->
   <div class="content-grid grid grid-cols-2 grid-rows-3 mx-6 md:mx-12 xl:mx-60 mt-10">
-    <h1 class="font-montserrat font-bold col-start-1 row-start-1">
+    <h1 class="font-montserrat font-bold col-start-1 row-start-1 sm:text-logo sm:self-stretch sm:leading-snug sm:text-center lg:text-left lg:leading-tight lg:text-all_in_one">
       All-in-one tool to help you choose the right class.
     </h1>
-    <h2 class="font-hind col-start-1 row-start-2">
+    <h2 class="font-hind col-start-1 row-start-2 sm:text-section_header sm:self-center lg:self-stretch lg:text-class_companion">
       Check the status of a class, receive notifications when a spot opens up,
       find a class location, and easily compare professors.
     </h2>
     <img src="assets/books.svg"
          class="xl:col-span-2 xl:row-span-2 xl:col-start-2 xl:row-start-1 books-img justify-self-start h-72" />
     <span class="flex">
-      <button class="font-semibold text-white bg-primary get-started-btn rounded-3xl px-7 h-12 leading-none font-montserrat text-4xl row-start-3 justify-self-center xl:justify-self-start"
+      <button class="font-semibold text-white bg-primary get-started-btn rounded-3xl px-7 h-12 leading-none font-montserrat text-4xl row-start-3 justify-self-center xl:justify-self-start sm:mt-4 sm:mb-10 lg:my-0"
               type="button"
               onclick="location.href='dashboard.html';">
         Get Started
@@ -58,7 +58,7 @@
   <!-- Create hero section -->
   <!-- Whole row flexbox -->
   <div
-       class="flex flex-wrap sm:flex-wrap md:flex-wrap lg:flex-nowrap xl:flex-nowrap mx-60 justify-evenly space-x-32 mb-20">
+       class="flex flex-wrap sm:flex-wrap lg:flex-nowrap xl:flex-nowrap sm:mx-2 lg:mx-60 lg:justify-evenly sm:space-y-10 lg:space-x-32 lg:space-y-0 mb-20">
     <!-- Box and image flexbox -->
     <div class="flex flex-col justify-items-center items-center space-y-3">
       <img src="assets/Gear Icon.svg" />
