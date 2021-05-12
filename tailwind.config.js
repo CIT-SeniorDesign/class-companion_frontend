@@ -30,7 +30,8 @@ module.exports = {
         logo: '40px',
         section_header: '24px',
         nav: '18px',
-        class_companion: `30px`
+        class_companion: `30px`,
+        all_in_one: `48px`
       },
       colors: {
         primary: '#D22030',
