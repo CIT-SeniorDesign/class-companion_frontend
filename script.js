@@ -50,7 +50,7 @@ function clearInputs() {
     document.querySelector("#department-select").value = ""
     document.querySelector("#class_listings").innerHTML = ''
     document.querySelector("#selectedClasses").innerHTML = ''
-    document.querySelector("#class_listings_title").style.display = "none"
+    document.querySelector("#listings").style.display = "none"
     checkboxCounter = 0
   }
 }
@@ -63,9 +63,11 @@ var classTitleCounter = 0
 // Search for classes
 search_btn.onclick = () => {
 
+  window.location.href = "#listings";
+
   // Increase the search button click counter
   searchButtonCounter++
-  document.querySelector("#class_listings_title").style.display = "inline"
+  document.querySelector("#listings").style.display = "inline"
 
   // If search button counter is greater than 1, then clear any existing class listings
   if (searchButtonCounter > 1) {

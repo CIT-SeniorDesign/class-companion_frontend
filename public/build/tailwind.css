@@ -643,7 +643,7 @@ video {
 .nav-button {
   border-color: transparent;
   border-bottom-width: 2px;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
@@ -667,7 +667,7 @@ video {
 }
 
 .section-header {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -676,7 +676,7 @@ video {
 }
 
 .section-explanation {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -686,7 +686,7 @@ video {
 }
 
 .input-text {
-  font-family: Hind;
+  font-family: Hind, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
@@ -697,7 +697,7 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgba(210, 32, 48, var(--tw-bg-opacity));
   border-radius: 0.5rem;
-  font-family: Hind;
+  font-family: Hind, sans-serif;
   font-weight: 500;
   height: 2.5rem;
   font-size: 1rem;
@@ -11867,15 +11867,15 @@ video {
 }
 
 .font-hind {
-  font-family: Hind;
+  font-family: Hind, sans-serif;
 }
 
 .font-montserrat {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
 }
 
 .font-roboto {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 }
 
 .font-thin {
@@ -44143,15 +44143,15 @@ h2 {
   }
 
   .sm\:font-hind {
-    font-family: Hind;
+    font-family: Hind, sans-serif;
   }
 
   .sm\:font-montserrat {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
 
   .sm\:font-roboto {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .sm\:font-thin {
@@ -76198,15 +76198,15 @@ h2 {
   }
 
   .md\:font-hind {
-    font-family: Hind;
+    font-family: Hind, sans-serif;
   }
 
   .md\:font-montserrat {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
 
   .md\:font-roboto {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .md\:font-thin {
@@ -108253,15 +108253,15 @@ h2 {
   }
 
   .lg\:font-hind {
-    font-family: Hind;
+    font-family: Hind, sans-serif;
   }
 
   .lg\:font-montserrat {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
 
   .lg\:font-roboto {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .lg\:font-thin {
@@ -140308,15 +140308,15 @@ h2 {
   }
 
   .xl\:font-hind {
-    font-family: Hind;
+    font-family: Hind, sans-serif;
   }
 
   .xl\:font-montserrat {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
 
   .xl\:font-roboto {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .xl\:font-thin {
@@ -172363,15 +172363,15 @@ h2 {
   }
 
   .\32xl\:font-hind {
-    font-family: Hind;
+    font-family: Hind, sans-serif;
   }
 
   .\32xl\:font-montserrat {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
 
   .\32xl\:font-roboto {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .\32xl\:font-thin {
