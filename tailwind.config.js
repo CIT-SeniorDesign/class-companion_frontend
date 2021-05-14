@@ -22,9 +22,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        hind: "Hind",
-        montserrat: "Montserrat",
-        roboto: "Roboto"
+        hind: ["Hind", 'sans-serif'],
+        montserrat: ["Montserrat", 'sans-serif'],
+        roboto: ["Roboto", 'sans-serif']
       },
       fontSize: {
         logo: '40px',
