@@ -63,6 +63,8 @@ var classTitleCounter = 0
 // Search for classes
 search_btn.onclick = () => {
 
+  window.location.href = "#class_listings_title";
+
   // Increase the search button click counter
   searchButtonCounter++
   document.querySelector("#class_listings_title").style.display = "inline"
