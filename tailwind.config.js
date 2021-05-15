@@ -3,16 +3,17 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-
-
       "sm": '320px',
-      // => @media (min-width: 640px) { ... }
+      // iPhone 5 breakpoint
+      // => @media (min-width: 320px) { ... }
 
       'md': '375px',
-      // => @media (min-width: 768px) { ... }
+      // iPhone 10 breakpoint
+      // => @media (min-width: 375px) { ... }
 
       'lg': '768px',
-      // => @media (min-width: 1024px) { ... }
+      // iPad breakpoint
+      // => @media (min-width: 768px) { ... }
 
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }

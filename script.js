@@ -440,12 +440,6 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
               const fetchWaldo = fetch(rmpURL)
                 .then(response => response.json())
                 .then(data => {
-                  // latitude = data.rooms[0].latitude
-                  // longitude = data.rooms[0].longitude
-                  // googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
-                  // return googleMapsURL
-
-                  console.log(data)
                   var professorLink = data.profLink
                   var rating = data.rating
                   var reviewCount = data.reviewCount
@@ -453,7 +447,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
                   return rmpData
                 });
 
-              const printCoordinates = (tableElements, num, location, parentElement, i) => {
+              const getRating = (tableElements, num, location, parentElement, i) => {
                 fetchWaldo.then((a) => {
                   console.log(a);
                   if (num == 10) {
@@ -470,7 +464,7 @@ function generateCourseTable(parentElement, thisTest, classUrl) {
                   }
                 });
               };
-              printCoordinates(tableElements, num, location, parentElement, i);
+              getRating(tableElements, num, location, parentElement, i);
             }
             else {
               tableElements[num].innerHTML = tableDataContent[num]
